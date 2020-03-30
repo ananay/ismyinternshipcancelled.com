@@ -58,7 +58,7 @@ export default class Index extends React.Component {
                             </div>
                             <div className={"metric"}>
                                 <div className={"metric_number"}>{this.state.counts.umm}</div>
-                                <div className={"metric_title metric_umm"}>👀 Umm</div>
+                                <div className={"metric_title metric_umm"}>👀 Remote</div>
                             </div>
                         </div>
                         <input
@@ -82,7 +82,7 @@ export default class Index extends React.Component {
                                         />
                                     )
                                 } else {
-                                    return (<div></div>);
+                                    return (<span></span>);
                                 }
                             })}
                         </div>
