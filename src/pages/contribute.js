@@ -17,9 +17,7 @@ export default class Index extends React.Component {
                     <br />
                     <br />
                     <center>
-                        <p>Go to the Google Spreadsheet and make sure you write a comment on the field you want to change!<br />Thanks in advance.</p>
-                        <br /><br />
-                        <h1><a href="https://docs.google.com/spreadsheets/d/1MoVx8Df8oPFRPRgAb6xpZ9wmh_bInZaRxs2Zj_dFR7U/edit#gid=0" target="_blank">Go here to contribute</a>
+                        <h1><a href="https://docs.google.com/forms/d/e/1FAIpQLSdjfsXIOPaHSJu2G5C8rK0BnBWpsOuwc4el9hajn3BnYSNrig/viewform" target="_blank">Fill out this form</a>
                         </h1>
                     </center>
                 </div>
