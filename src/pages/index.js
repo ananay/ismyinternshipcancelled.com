@@ -16,9 +16,11 @@ export default class Index extends React.Component {
                 umm: 0,
                 freeze: 0
             },
-            search: ''
+            search: '',
+            status: '',
         };
         this.updateSearch = this.updateSearch.bind(this);
+        this.filterByStatus = this.filterByStatus.bind(this);
     }
 
     componentDidMount() {
@@ -35,16 +37,33 @@ export default class Index extends React.Component {
                 search: this.urlParams.get('company')
             });
         }
+        if (this.urlParams.has('status')) {
+            this.setState({
+                status: this.urlParams.get('status')
+            });
+        }
     }
 
     updateSearch(t) {
         let company = t.target.value;
-
         this.setState({
-            search: company
+            search: company,
+            status: ''
         });
 
         this.urlParams.set('company', company);
+        this.urlParams.set('status', '');
+        window.history.replaceState({}, '', '?' + this.urlParams.toString());
+    }
+
+    filterByStatus(status) {
+        this.setState({
+            search: '',
+            status: status
+        });
+
+        this.urlParams.set('company', '');
+        this.urlParams.set('status', status);
         window.history.replaceState({}, '', '?' + this.urlParams.toString());
     }
 
@@ -60,19 +79,19 @@ export default class Index extends React.Component {
                         <br />
                         <p className={"credits"}>made by <a href="https://twitter.com/ananayarora" target="_blank">@ananayarora</a> and <a href="https://kaaniboy.github.io/" target="_blank">@kaaniboy</a></p>
                         <div className={"metrics"}>
-                            <div className={"metric"}>
+                            <div className={"metric"} onClick={() => this.filterByStatus('yes')}>
                                 <div className={"metric_number"}>{this.state.counts.yes}</div>
                                 <div className={"metric_title metric_yes"}>😭 Yes</div>
                             </div>
-                            <div className={"metric"}>
+                            <div className={"metric"} onClick={() => this.filterByStatus('nope')}>
                                 <div className={"metric_number"}>{this.state.counts.nope}</div>
                                 <div className={"metric_title metric_nope"}>😅 Nope</div>
                             </div>
-                            <div className={"metric"}>
+                            <div className={"metric"} onClick={() => this.filterByStatus('remote')}>
                                 <div className={"metric_number"}>{this.state.counts.remote}</div>
                                 <div className={"metric_title metric_remote"}>👀 Remote</div>
                             </div>
-                            <div className={"metric"}>
+                            <div className={"metric"} onClick={() => this.filterByStatus('freeze')}>
                                 <div className={"metric_number"}>{this.state.counts.freeze}</div>
                                 <div className={"metric_title metric_freeze"}>🥶 Freeze</div>
                             </div>
@@ -86,7 +105,8 @@ export default class Index extends React.Component {
                         />
                         <div className={"list"}>
                             {this.state.data.map((r) => {
-                                if (r[0].toLowerCase().includes(this.state.search.toLowerCase())) {
+                                if (r[0].toLowerCase().includes(this.state.search.toLowerCase())
+                                    && r[1].toLowerCase().includes(this.state.status)) {
                                     return (
                                         <CompanyCard
                                             company_logo={r[6]}
