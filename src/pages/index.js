@@ -77,7 +77,7 @@ export default class Index extends React.Component {
                         <br />
                         <p>We hope not.</p>
                         <br />
-                        <p className={"credits"}>made by <a href="https://ananayarora.com" target="_blank">@ananayarora</a> and <a href="https://kaaniboy.github.io/" target="_blank">@kaaniboy</a></p>
+                        <p className={"credits"}>made by <a href="https://twitter.com/ananayarora" target="_blank">@ananayarora</a> and <a href="https://kaaniboy.github.io/" target="_blank">@kaaniboy</a></p>
                         <div className={"metrics"}>
                             <div className={"metric"} onClick={() => this.filterByStatus('yes')}>
                                 <div className={"metric_number"}>{this.state.counts.yes}</div>
