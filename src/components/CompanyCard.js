@@ -9,7 +9,7 @@ export default class CompanyCard extends React.Component {
     render() {
         return (
             <div className={"company_card"}>
-                
+                <img src={this.props.company_logo}></img>
                 <h1 className={"name"}>{this.props.name}</h1>
                 {this.props.status == "Yes" &&
                     <div className={"company_status company_status_yes"}>😭 Yes</div>
