@@ -31,7 +31,7 @@ const count = () => {
     if (status) {
         let count_yes = 0;
         let count_nope = 0;
-        let count_umm = 0; 
+        let count_remote = 0; 
         let count_freeze = 0;
         for (let i = 0; i < a.length; i++) {
             if (a[i][1].toLowerCase() == "yes") {
@@ -40,8 +40,8 @@ const count = () => {
             if (a[i][1].toLowerCase() == "nope" || a[i][1].toLowerCase() == "no") {
                 count_nope++;
             }
-            if (a[i][1].toLowerCase() == "umm" || a[i][1].toLowerCase() == "undecided" || a[i][1].toLowerCase() == "") {
-                count_umm++;
+            if (a[i][1].toLowerCase() == "remote") {
+                count_remote++;
             }
             if (a[i][1].toLowerCase() == "freeze" || a[i][1].toLowerCase() == "hiringfreeze") {
                 count_freeze++;
@@ -50,7 +50,7 @@ const count = () => {
         return {
             "yes": count_yes,
             "nope": count_nope,
-            "umm": count_umm,
+            "remote": count_remote,
             "freeze": count_freeze
         };
     } else {

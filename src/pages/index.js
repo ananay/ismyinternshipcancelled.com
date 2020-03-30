@@ -58,12 +58,12 @@ export default class Index extends React.Component {
                                 <div className={"metric_title metric_nope"}>😅 Nope</div>
                             </div>
                             <div className={"metric"}>
-                                <div className={"metric_number"}>{this.state.counts.umm}</div>
-                                <div className={"metric_title metric_umm"}>👀 Remote</div>
+                                <div className={"metric_number"}>{this.state.counts.remote}</div>
+                                <div className={"metric_title metric_remote"}>👀 Remote</div>
                             </div>
                             <div className={"metric"}>
                                 <div className={"metric_number"}>{this.state.counts.freeze}</div>
-                                <div className={"metric_title metric_umm"}>🥶 Freeze</div>
+                                <div className={"metric_title metric_freeze"}>🥶 Freeze</div>
                             </div>
                         </div>
                         <input
