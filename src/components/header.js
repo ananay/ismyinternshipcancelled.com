@@ -26,7 +26,7 @@ export default class Header extends React.Component {
                     <ul>
                         <Link to="/"><li className={this.props.current == 'home' ? "active" : ""}>Home</li></Link>
                         <Link to="/disclaimer"><li className={this.props.current == 'disclaimer' ? "active" : ""}>Disclaimer</li></Link>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjfsXIOPaHSJu2G5C8rK0BnBWpsOuwc4el9hajn3BnYSNrig/viewform"><li>Contribute</li></a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjfsXIOPaHSJu2G5C8rK0BnBWpsOuwc4el9hajn3BnYSNrig/viewform" target="_blank"><li>Contribute</li></a>
                         {/*<Link to="/contact"><li className={this.props.current == 'contact' ? "active" : ""}>Contact</li></Link>*/}
                     </ul>
                 </div>
