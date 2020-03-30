@@ -32,6 +32,7 @@ const count = () => {
         let count_yes = 0;
         let count_nope = 0;
         let count_umm = 0; 
+        let count_freeze = 0;
         for (let i = 0; i < a.length; i++) {
             if (a[i][1].toLowerCase() == "yes") {
                 count_yes++;
@@ -42,11 +43,15 @@ const count = () => {
             if (a[i][1].toLowerCase() == "umm" || a[i][1].toLowerCase() == "undecided" || a[i][1].toLowerCase() == "") {
                 count_umm++;
             }
+            if (a[i][1].toLowerCase() == "freeze" || a[i][1].toLowerCase() == "hiringfreeze") {
+                count_freeze++;
+            }
         }
         return {
             "yes": count_yes,
             "nope": count_nope,
-            "umm": count_umm
+            "umm": count_umm,
+            "freeze": count_freeze
         };
     } else {
         return false;

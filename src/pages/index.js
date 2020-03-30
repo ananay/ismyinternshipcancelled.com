@@ -13,7 +13,8 @@ export default class Index extends React.Component {
             counts: {
                 yes: 0,
                 nope: 0,
-                umm: 0
+                umm: 0,
+                freeze: 0
             },
             search: ''
         };
@@ -59,6 +60,10 @@ export default class Index extends React.Component {
                             <div className={"metric"}>
                                 <div className={"metric_number"}>{this.state.counts.umm}</div>
                                 <div className={"metric_title metric_umm"}>👀 Remote</div>
+                            </div>
+                            <div className={"metric"}>
+                                <div className={"metric_number"}>{this.state.counts.freeze}</div>
+                                <div className={"metric_title metric_umm"}>🥶 Freeze</div>
                             </div>
                         </div>
                         <input
