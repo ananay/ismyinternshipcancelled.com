@@ -23,18 +23,29 @@ export default class Index extends React.Component {
 
     componentDidMount() {
         sheets.fetch().then((r) => {
-            console.log(r);
             this.setState({
                 data: r,
                 counts: sheets.count()
             });
         });
+
+        this.urlParams = new URLSearchParams(window.location.search);
+        if (this.urlParams.has('company')) {
+            this.setState({
+                search: this.urlParams.get('company')
+            });
+        }
     }
 
     updateSearch(t) {
+        let company = t.target.value;
+
         this.setState({
-            search: t.target.value
+            search: company
         });
+
+        this.urlParams.set('company', company);
+        window.history.replaceState({}, '', '?' + this.urlParams.toString());
     }
 
     render() {
@@ -70,6 +81,7 @@ export default class Index extends React.Component {
                             type={"text"}
                             placeholder={"Company name here..."}
                             className={"search_box"}
+                            value={this.state.search}
                             onChange={this.updateSearch}
                         />
                         <div className={"list"}>
@@ -84,10 +96,11 @@ export default class Index extends React.Component {
                                             source={r[3]}
                                             official_link={r[4]}
                                             linkedin={r[5]}
+                                            key={r[0]}
                                         />
                                     )
                                 } else {
-                                    return (<span></span>);
+                                    return (<span key={r[0]}></span>);
                                 }
                             })}
                         </div>
