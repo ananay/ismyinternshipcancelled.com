@@ -26,7 +26,7 @@ export default class Resources extends React.Component {
                         </h2>
                         <br />
                         <br />
-                        <h2><a href="https://docs.google.com/forms/d/e/1FAIpQLSdjfsXIOPaHSJu2G5C8rK0BnBWpsOuwc4el9hajn3BnYSNrig/viewform" target="_blank">Have anything to contribute to this list? Fill out this form!</a></h2>
+                        <h2><a href="https://docs.google.com/forms/d/e/1FAIpQLScmLlrZOhK46BSuRxAqpOUQW-CgE9gWv_6QFedVKkB74ZKUcg/viewform" target="_blank">Have anything to contribute to this list? Fill out this form!</a></h2>
                     </div>
                 </center>
             </div>
