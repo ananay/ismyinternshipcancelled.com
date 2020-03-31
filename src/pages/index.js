@@ -57,17 +57,24 @@ export default class Index extends React.Component {
     }
 
     filterByStatus(status) {
+        let newStatus = status == this.state.status ? '' : status;
         this.setState({
             search: '',
-            status: status
+            status: newStatus
         });
 
         this.urlParams.set('company', '');
-        this.urlParams.set('status', status);
+        this.urlParams.set('status', newStatus);
         window.history.replaceState({}, '', '?' + this.urlParams.toString());
     }
 
     render() {
+        const selectedClass = 'metric_selected';
+        let yesClass = this.state.status == 'yes' ? selectedClass : '';
+        let nopeClass = this.state.status == 'nope' ? selectedClass : '';
+        let remoteClass = this.state.status == 'remote' ? selectedClass : '';
+        let freezeClass = this.state.status == 'freeze' ? selectedClass : '';
+
         return (
             <div>
                 <Header current={"home"} />
@@ -79,19 +86,19 @@ export default class Index extends React.Component {
                         <br />
                         <p className={"credits"}>made by <a href="https://twitter.com/ananayarora" target="_blank">@ananayarora</a> and <a href="https://kaaniboy.github.io/" target="_blank">@kaaniboy</a></p>
                         <div className={"metrics"}>
-                            <div className={"metric"} onClick={() => this.filterByStatus('yes')}>
+                            <div className={"metric " + yesClass} onClick={() => this.filterByStatus('yes')}>
                                 <div className={"metric_number"}>{this.state.counts.yes}</div>
                                 <div className={"metric_title metric_yes"}>😭 Yes</div>
                             </div>
-                            <div className={"metric"} onClick={() => this.filterByStatus('nope')}>
+                            <div className={"metric " + nopeClass} onClick={() => this.filterByStatus('nope')}>
                                 <div className={"metric_number"}>{this.state.counts.nope}</div>
                                 <div className={"metric_title metric_nope"}>😅 Nope</div>
                             </div>
-                            <div className={"metric"} onClick={() => this.filterByStatus('remote')}>
+                            <div className={"metric " + remoteClass} onClick={() => this.filterByStatus('remote')}>
                                 <div className={"metric_number"}>{this.state.counts.remote}</div>
                                 <div className={"metric_title metric_remote"}>👀 Remote</div>
                             </div>
-                            <div className={"metric"} onClick={() => this.filterByStatus('freeze')}>
+                            <div className={"metric " + freezeClass} onClick={() => this.filterByStatus('freeze')}>
                                 <div className={"metric_number"}>{this.state.counts.freeze}</div>
                                 <div className={"metric_title metric_freeze"}>🥶 Freeze</div>
                             </div>
