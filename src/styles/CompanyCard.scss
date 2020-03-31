@@ -2,11 +2,12 @@
     display: inline-block;
     width: 300px;
     min-height: 350px;
-    border: 4px solid rgba(0,0,0,0.05);
+    border: 1px solid #C6C6C6;
     margin: 5px;
     padding: 20px;
-    border-radius: 5px;
     vertical-align: top;
+    transition: background-color 0.25s;
+
     img {
         width: 100px;
     }
@@ -37,4 +38,9 @@
         font-weight: 500;
         text-align: left;
     }
+}
+
+.company_card:hover,
+.company_card:active {
+    background-color: #C6C6C6;
 }
