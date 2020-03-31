@@ -85,8 +85,8 @@ export default class Index extends React.Component {
                         <p className={"page_subtitle"}>We hope not.</p>
                         <br />
                         <p>
-                            Made by <a href="https://twitter.com/ananayarora" target="_blank">@ananayarora</a>
-                            , <a href="https://kaaniboy.github.io/" target="_blank">@kaaniboy</a>
+                            Made by <a href="https://ananayarora.com" target="_blank">Ananay Arora</a>
+                            , <a href="https://kaaniboy.github.io/" target="_blank">Kaan Aksoy</a>
                             , and <a href="https://github.com/yash101" target="_blank">Devyash Lodha</a>
                         </p>
                         <div className={"metrics"}>
