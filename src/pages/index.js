@@ -109,7 +109,7 @@ export default class Index extends React.Component {
                         </div>
                         <input
                             type={"text"}
-                            placeholder={"Company name here..."}
+                            placeholder={"Filter by company name..."}
                             className={"search_box"}
                             value={this.state.search}
                             onChange={this.updateSearch}
