@@ -49,6 +49,15 @@ body {
         text-align: center;
         font-size: 18pt;
     }
+
+}
+@media only screen and (max-width: 480px) {
+    .page {
+        margin-top: 24px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 24px;
+    }
 }
 
 .metrics {
