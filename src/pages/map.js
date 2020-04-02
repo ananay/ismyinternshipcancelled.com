@@ -92,7 +92,7 @@ export default class InternshipMap extends React.Component {
         companies = companies.filter(r => r[8]);
         
         if (yes) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Yes'));
-        if (no) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'No'));
+        if (no) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Nope'));
         if (remote) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Remote'));
         if (freeze) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Freeze'));
 
