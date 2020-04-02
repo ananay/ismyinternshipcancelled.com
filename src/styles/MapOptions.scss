@@ -1,19 +1,18 @@
 #map_options {
     position: fixed;
     z-index: 1000;
-    top: 20px; 
-    right: 20px;
+    bottom: 7%;
+    right: 2.5%;
     width: 250px;
     height: 200px;
-    padding: 15px;
+    padding: 30px;
     background-color: white;
-    border-radius: 2%;
-    border-style: solid;
-    border-color: gray;
-    border-width: 1px;
+    border-radius: 7px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 
     h3 {
         padding-bottom: 10px;
+        font-weight: 500;
     }
     p {
         padding-bottom: 10px;
@@ -21,6 +20,7 @@
     label {
         padding-left: 10px;
         padding-bottom: 10px;
+        font-weight: bold;
     }
 
     .company_status_no {
@@ -96,4 +96,11 @@
     border-style: solid;
     border-color: gray;
     border-width: 1px;
+}
+
+.floating_button_container {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    z-index: +9999;
 }
