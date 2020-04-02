@@ -38,6 +38,9 @@ export default class InternshipMap extends React.Component {
                 data: r
             });
         });
+        setTimeout(() => {
+            this.render();
+        }, 500);
     }
 
     setCompanyOnMap(name) {
@@ -96,32 +99,34 @@ export default class InternshipMap extends React.Component {
                     </div>
                 );
             });
-
-        return (
-            <div id={"map_container"}>
-                <Header current={"map"} />
-                <Helmet>
-                    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-                </Helmet>
-                <MapOptions onChange={this.onMapOptionsChange} />
-                <Map center={this.state.mapOptions.position} zoom={this.state.mapOptions.zoom} id={"map"}>
-                    <TileLayer
-                        url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
-                        attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                    />
-                    {markers}
-                </Map>
-                <div className={"map_search_box"}>
-                    <Autocomplete
-                        options={companies}
-                        getOptionLabel={(option) => option[0]}
-                        style={{ width: 300 }}
-                        onChange={(event) => { this.setCompanyOnMap(event.target.innerHTML) }}
-                        renderInput={(params) => <TextField {...params} label="Choose company here" variant="filled" />}
-                    />
+        if (typeof window !== 'undefined') {
+            return (
+                <div id={"map_container"}>
+                    <Header current={"map"} />
+                    <Helmet>
+                        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+                    </Helmet>
+                    <MapOptions onChange={this.onMapOptionsChange} />
+                    <Map center={this.state.mapOptions.position} zoom={this.state.mapOptions.zoom} id={"map"}>
+                        <TileLayer
+                            url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
+                            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                        />
+                        {markers}
+                    </Map>
+                    <div className={"map_search_box"}>
+                        <Autocomplete
+                            options={companies}
+                            getOptionLabel={(option) => option[0]}
+                            style={{ width: 300 }}
+                            onChange={(event) => { this.setCompanyOnMap(event.target.innerHTML) }}
+                            renderInput={(params) => <TextField {...params} label="Choose company here" variant="filled" />}
+                        />
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        return null
     }
 
     filterCompanies(companies) {
