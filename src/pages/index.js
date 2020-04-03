@@ -124,8 +124,8 @@ export default class Index extends React.Component {
                                             status={r[1]}
                                             name={r[0]}
                                             notes={r[2]}
-                                            source={r[3]}
-                                            official_link={r[4]}
+                                            source={r[4]}
+                                            official_link={r[3]}
                                             linkedin={r[5]}
                                             key={r[0]}
                                         />
