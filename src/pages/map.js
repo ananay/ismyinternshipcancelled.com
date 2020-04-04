@@ -15,6 +15,11 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 export default class InternshipMap extends React.Component {
     constructor(props) {
         super(props);
+
+        this.DEFAULT_MARKER_ICON_URL = 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png';
+        this.MARKER_ICON_SIZE = [32, 32];
+        this.STARTING_COORDS = [45.5051064, -122.6750261];
+
         this.state = {
             data: [],
             options: {
@@ -25,10 +30,11 @@ export default class InternshipMap extends React.Component {
                 hiring: true
             },
             mapOptions: {
-                position: [45.5051064, -122.6750261],
+                position: this.STARTING_COORDS,
                 zoom: 4
             }
         };
+
         this.onMapOptionsChange = this.onMapOptionsChange.bind(this);
         this.setCompanyOnMap = this.setCompanyOnMap.bind(this);
     }
@@ -56,7 +62,7 @@ export default class InternshipMap extends React.Component {
         } else {
             this.setState({
                 mapOptions: {
-                    position: [45.5051064, -122.6750261],
+                    position: this.STARTING_COORDS,
                     zoom: 4
                 }
             })
@@ -68,8 +74,8 @@ export default class InternshipMap extends React.Component {
 
         const companyIcons = companies.map(r => {
             return L.icon({
-                iconUrl: r[6] || 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png',
-                iconSize: [32, 32]
+                iconUrl: r[6] || this.DEFAULT_MARKER_ICON_URL,
+                iconSize: this.MARKER_ICON_SIZE
             });
         });
 
@@ -119,7 +125,7 @@ export default class InternshipMap extends React.Component {
                             getOptionLabel={(option) => option[0]}
                             style={{ width: 300 }}
                             onChange={(event) => { this.setCompanyOnMap(event.target.innerHTML) }}
-                            renderInput={(params) => <TextField {...params} label="Choose company here" variant="filled" />}
+                            renderInput={(params) => <TextField {...params} label="Choose company..." variant="filled" />}
                         />
                     </div>
                 </div>
