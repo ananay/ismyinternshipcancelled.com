@@ -24,19 +24,42 @@ export default class CompanyCard extends React.Component {
         this.notes = this.props.notes || "";
     }
 
+    // Used to prevent scrolling to top of page after Swal modal is closed
+    getScrollPosition() {
+        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        return [scrollX, scrollY];
+    }
+
     showNotes() {
+        const [scrollX, scrollY] = this.getScrollPosition();
         Swal.fire({
             title: "Notes for " + this.props.name,
             type: 'info',
-            html: this.notes + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`
+            html: this.notes + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`,
+            onAfterClose: () => window.scrollTo(scrollX, scrollY)
         });
     }
 
     showBadgeMeaning() {
+        const [scrollX, scrollY] = this.getScrollPosition();
         Swal.fire({
             title: "What the verified badge means",
-            text: "When you see a verified badge, it means the company made a public announcement in the press or reached out personally to IsMyInternshipCancelled to officially announce the change"
+            text: "When you see a verified badge, it means the company made a public announcement in the press or reached out personally to IsMyInternshipCancelled to officially announce the change",
+            onAfterClose: () => window.scrollTo(scrollX, scrollY)
         })
+    }
+
+    shortenText(text, limit = 100) {
+        if (!text || text.length <= limit) return text;
+
+        const sub = text.substring(0, 100);
+        if (!sub.includes(' ')) {
+            return sub + ' ...';
+        }
+
+        const lastSpace = sub.lastIndexOf(' ');
+        return sub.substring(0, lastSpace) + ' ...';
     }
 
     render() {
@@ -67,8 +90,11 @@ export default class CompanyCard extends React.Component {
                             <p>Notes: {this.notes}</p>
                         }
                         <center>
-                            {this.notes != "" && this.props.source != 'Official' && this.notes.length > 100 &&
-                                <TheButton onClick={() => { this.showNotes() }} variant={"contained"}>View Notes</TheButton>
+                            {this.notes != "" && this.props.source != 'Official' && this.notes.length >= 100 &&
+                                <div className={"shortened_notes"} onClick={this.showNotes}>
+                                    <p>Notes: {this.shortenText(this.notes)}</p>
+                                    <p className={"notes_read_more"}>Read More</p>
+                                </div>
                             }
                         </center>
                     </div>

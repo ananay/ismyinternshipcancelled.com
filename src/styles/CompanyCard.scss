@@ -38,3 +38,11 @@
         text-align: left;
     }
 }
+
+.shortened_notes {
+    cursor: pointer;
+    .notes_read_more {
+        padding-top: 10px;
+        font-weight: 640;
+    }
+}
