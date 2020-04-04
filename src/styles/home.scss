@@ -48,8 +48,12 @@ body {
         font-size: 30pt;
     }
     .page_subtitle {
+        cursor: pointer;
         text-align: center;
         font-size: 18pt;
+        .disclaimer_icon {
+            padding-left: 5px;
+        }
     }
 
 }

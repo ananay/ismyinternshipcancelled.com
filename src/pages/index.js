@@ -3,6 +3,8 @@ import Header from '../components/header.js';
 import "../styles/home.scss";
 import sheets from "../controllers/sheets";
 import CompanyCard from '../components/CompanyCard.js';
+import Swal from 'sweetalert2';
+import { FaInfoCircle } from 'react-icons/fa';
 
 export default class Index extends React.Component {
 
@@ -21,6 +23,7 @@ export default class Index extends React.Component {
         };
         this.updateSearch = this.updateSearch.bind(this);
         this.filterByStatus = this.filterByStatus.bind(this);
+        this.showDisclaimer = this.showDisclaimer.bind(this);
     }
 
     componentDidMount() {
@@ -68,6 +71,24 @@ export default class Index extends React.Component {
         window.history.replaceState({}, '', '?' + this.urlParams.toString());
     }
 
+    showDisclaimer() {
+        Swal.fire({
+            title: 'Disclaimer',
+            html: `
+            <p>If you're an employer, and would like me to remove your organization from this page, or would 
+            like to send an official confirmation to us about your hiring status, please reach out at 
+            <a href="#">i [at] ananayarora.com</a></p>
+            <br />
+            <p>No information on this page is our own, and none reflects our views.  All hiring 
+            information here is curated from the Internet, and the sources are listed in the Contributions 
+            document. If there's an official notice from the organization regarding their internship program's status, 
+            it will be linked.</p>
+            <br />
+            <p>All logos and branding elements used on these pages are properties of their respective 
+            organizations.</p>`
+        });
+    }
+
     render() {
         const selectedClass = 'metric_selected';
         let yesClass = this.state.status == 'yes' ? selectedClass : '';
@@ -82,7 +103,10 @@ export default class Index extends React.Component {
                     <div className={"page"}>
                         <h1 className={"page_title"}>🤔 is my internship cancelled?</h1>
                         <br />
-                        <p className={"page_subtitle"}>We hope not.</p>
+                        <p onClick={this.showDisclaimer} className={"page_subtitle"}>
+                            We hope not.
+                            <span className={"disclaimer_icon"}><FaInfoCircle color={"#1da1f2"} size={20} /></span>
+                        </p>
                         <br />
                         <p>
                             Made by <a href="https://ananayarora.com" target="_blank">Ananay Arora</a>

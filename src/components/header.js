@@ -29,7 +29,6 @@ export default class Header extends React.Component {
                         <Link to="/map"><li className={current == 'map' ? "active" : ""}>Map</li></Link>
                         <Link to="/resources"><li className={current == 'resources' ? "active" : ""}>Resources</li></Link>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjfsXIOPaHSJu2G5C8rK0BnBWpsOuwc4el9hajn3BnYSNrig/viewform" target="_blank"><li>Contribute</li></a>
-                        <Link to="/disclaimer"><li className={current == 'disclaimer' ? "active" : ""}>Disclaimer</li></Link>
                     </ul>
                 </div>
                 <div className={"clear"}></div>
