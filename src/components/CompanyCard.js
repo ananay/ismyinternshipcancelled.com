@@ -102,5 +102,4 @@ export default class CompanyCard extends React.Component {
             </div>
         )
     }
-
 }
