@@ -1,14 +1,41 @@
 const axios = require('axios');
 const url = "https://sheets.googleapis.com/v4/spreadsheets/1MoVx8Df8oPFRPRgAb6xpZ9wmh_bInZaRxs2Zj_dFR7U/values/Sheet1!A2:Z999?key=AIzaSyD5mv39wz-LAC_bu9ZzleywmxGhYN9s79s";
 
-let a = [];
+let companies = [];
 let err = false;
+
+const NAME_COL = 0;
+const STATUS_COL = 1;
+const NOTES_COL = 2;
+const SOURCE_COL = 3;
+const OFFICIAL_LINK_COL = 4;
+const LINKEDIN_COL = 5;
+const LOGO_COL = 6;
+const LOCATION_COL = 7;
+const COORDS_COL = 8;
+
+function extractColumns(row) {
+    return {
+        name: row[NAME_COL],
+        status: row[STATUS_COL],
+        notes: row[NOTES_COL],
+        source: row[SOURCE_COL],
+        official_link: row[OFFICIAL_LINK_COL],
+        linkedin: row[LINKEDIN_COL],
+        logo: row[LOGO_COL],
+        location: row[LOCATION_COL],
+        coords: [
+            row[COORDS_COL] && row[COORDS_COL].includes(',') ? +row[COORDS_COL].split(',')[0] : 0,
+            row[COORDS_COL] && row[COORDS_COL].includes(',') ? +row[COORDS_COL].split(',')[1] : 0
+        ]
+    };
+}
 
 const fetch = () => {
     return new Promise((resolve, reject) => {
         axios.get(url).then((r) => {
-            a = r.data.values;
-            resolve(a);
+            companies = r.data.values.map(extractColumns);
+            resolve(companies);
         }).catch((e) => {
             if (e) {
                 console.error(err);
@@ -20,7 +47,7 @@ const fetch = () => {
 }
 
 const status = () => {
-    if (a.length > 0 && !err) {
+    if (companies.length > 0 && !err) {
         return true;
     } else {
         return false;
@@ -35,20 +62,17 @@ const count = () => {
         let count_freeze = 0;
         let count_hiring = 0;
 
-        for (let i = 0; i < a.length; i++) {
-            if (a[i][1].toLowerCase() == "yes") {
+        for (let company of companies) {
+            const lowerCaseStatus = company.status.toLowerCase();
+            if (lowerCaseStatus == "yes") {
                 count_yes++;
-            }
-            if (a[i][1].toLowerCase() == "nope" || a[i][1].toLowerCase() == "no") {
+            } else if (lowerCaseStatus == "nope" || lowerCaseStatus == "no") {
                 count_nope++;
-            }
-            if (a[i][1].toLowerCase() == "remote") {
+            } else if (lowerCaseStatus == "remote") {
                 count_remote++;
-            }
-            if (a[i][1].toLowerCase().includes("freeze")) {
+            } else if (lowerCaseStatus.includes("freeze")) {
                 count_freeze++;
-            }
-            if (a[i][1].toLowerCase().includes("hiring")) {
+            } else if (lowerCaseStatus.includes("hiring")) {
                 count_hiring++;
             }
         }

@@ -21,7 +21,7 @@ export default class InternshipMap extends React.Component {
         this.STARTING_COORDS = [45.5051064, -122.6750261];
 
         this.state = {
-            data: [],
+            companies: [],
             options: {
                 yes: true,
                 no: true,
@@ -40,9 +40,9 @@ export default class InternshipMap extends React.Component {
     }
 
     componentDidMount() {
-        sheets.fetch().then((r) => {
+        sheets.fetch().then(companies => {
             this.setState({
-                data: r
+                companies: companies
             });
         });
         setTimeout(() => {
@@ -51,11 +51,11 @@ export default class InternshipMap extends React.Component {
     }
 
     setCompanyOnMap(name) {
-        let companyObject = this.state.data.filter(company => company[0] == name);
-        if (typeof companyObject[0] !== 'undefined') {
+        let company = this.state.companies.filter(c => c.name === name)[0];
+        if (typeof company !== 'undefined') {
             this.setState({
                 mapOptions: {
-                    position: [companyObject[0][8].split(",")[0], companyObject[0][8].split(",")[1]],
+                    position: company.coords,
                     zoom: 13
                 }
             });
@@ -69,41 +69,44 @@ export default class InternshipMap extends React.Component {
         }
     }
 
-    render() {
-        const companies = this.filterCompanies(this.state.data);
-
-        const companyIcons = companies.map(r => {
+    renderMarkers(companies) {
+        const companyIcons = companies.map(c => {
             return L.icon({
-                iconUrl: r[6] || this.DEFAULT_MARKER_ICON_URL,
+                iconUrl: c.logo || this.DEFAULT_MARKER_ICON_URL,
                 iconSize: this.MARKER_ICON_SIZE
             });
         });
 
-        const markers = companies
-            .map((r, i) => {
-                const position = [+r[8].split(',')[0], +r[8].split(',')[1]];
+        return companies
+            .map((c, i) => {
                 return (
-                    <div className={"marker_company_status_" + r[1]} key={r[0]}>
+                    <div className={"marker_company_status_" + c.status} key={c.name}>
                         <Marker
-                            position={position}
+                            position={c.coords}
                             icon={companyIcons[i]}
-                            key={r[0]}>
+                            key={c.name}>
                             <Popup>
                                 <CompanyPopup
-                                    company_logo={r[6]}
-                                    status={r[1]}
-                                    name={r[0]}
-                                    notes={r[2]}
-                                    source={r[3]}
-                                    official_link={r[4]}
-                                    linkedin={r[5]}
-                                    key={r[0]}
+                                    company_logo={c.logo}
+                                    status={c.status}
+                                    name={c.name}
+                                    notes={c.notes}
+                                    source={c.source}
+                                    official_link={c.official_link}
+                                    linkedin={c.linkedin}
+                                    key={c.name}
                                 />
                             </Popup>
                         </Marker>
                     </div>
                 );
             });
+    }
+
+    render() {
+        const filteredCompanies = this.filterCompanies(this.state.companies);
+        const markers = this.renderMarkers(filteredCompanies);
+
         if (typeof window !== 'undefined') {
             return (
                 <div id={"map_container"}>
@@ -121,8 +124,8 @@ export default class InternshipMap extends React.Component {
                     </Map>
                     <div className={"map_search_box"}>
                         <Autocomplete
-                            options={companies}
-                            getOptionLabel={(option) => option[0]}
+                            options={filteredCompanies}
+                            getOptionLabel={c => c.name}
                             style={{ width: 300 }}
                             onChange={(event) => { this.setCompanyOnMap(event.target.innerHTML) }}
                             renderInput={(params) => <TextField {...params} label="Choose company..." variant="filled" />}
@@ -139,13 +142,13 @@ export default class InternshipMap extends React.Component {
         let filteredCompanies = [];
 
         // Remove companies without a location set
-        companies = companies.filter(r => r[8]);
+        companies = companies.filter(c => c.coords[1] !== 0);
 
-        if (yes) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Yes'));
-        if (no) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Nope'));
-        if (remote) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Remote'));
-        if (freeze) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Freeze'));
-        if (hiring) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Hiring'));
+        if (yes) filteredCompanies = filteredCompanies.concat(companies.filter(c => c.status === 'Yes'));
+        if (no) filteredCompanies = filteredCompanies.concat(companies.filter(c => c.status === 'Nope'));
+        if (remote) filteredCompanies = filteredCompanies.concat(companies.filter(c => c.status === 'Remote'));
+        if (freeze) filteredCompanies = filteredCompanies.concat(companies.filter(c => c.status === 'Freeze'));
+        if (hiring) filteredCompanies = filteredCompanies.concat(companies.filter(c => c.status === 'Hiring'));
 
         return filteredCompanies;
     }

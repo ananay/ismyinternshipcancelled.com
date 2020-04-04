@@ -11,7 +11,7 @@ export default class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            companies: [],
             counts: {
                 yes: 0,
                 nope: 0,
@@ -28,9 +28,9 @@ export default class Index extends React.Component {
     }
 
     componentDidMount() {
-        sheets.fetch().then((r) => {
+        sheets.fetch().then((companies) => {
             this.setState({
-                data: r,
+                companies: companies,
                 counts: sheets.count()
             });
         });
@@ -150,23 +150,23 @@ export default class Index extends React.Component {
     renderCompanyCards() {
         return (
             <div className={"list"}>
-                {this.state.data.map((r) => {
-                    if (r[0].toLowerCase().includes(this.state.search.toLowerCase())
-                        && r[1].toLowerCase().includes(this.state.status)) {
+                {this.state.companies.map((c) => {
+                    if (c.name.toLowerCase().includes(this.state.search.toLowerCase())
+                        && c.status.toLowerCase().includes(this.state.status)) {
                         return (
                             <CompanyCard
-                                company_logo={r[6]}
-                                status={r[1]}
-                                name={r[0]}
-                                notes={r[2]}
-                                source={r[4]}
-                                official_link={r[3]}
-                                linkedin={r[5]}
-                                key={r[0]}
+                                company_logo={c.logo}
+                                status={c.status}
+                                name={c.name}
+                                notes={c.notes}
+                                source={c.source}
+                                official_link={c.official_link}
+                                linkedin={c.linkedin}
+                                key={c.name}
                             />
                         )
                     } else {
-                        return (<span key={r[0]}></span>);
+                        return (<span key={c.name}></span>);
                     }
                 })}
             </div>
