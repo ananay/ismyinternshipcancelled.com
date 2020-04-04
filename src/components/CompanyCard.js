@@ -21,13 +21,14 @@ export default class CompanyCard extends React.Component {
         super(props);
         this.showNotes = this.showNotes.bind(this);
         this.showBadgeMeaning = this.showBadgeMeaning.bind(this);
+        this.notes = this.props.notes || "";
     }
 
     showNotes() {
         Swal.fire({
             title: "Notes for " + this.props.name,
             type: 'info',
-            html: this.props.notes + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`
+            html: this.notes + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`
         });
     }
 
@@ -62,11 +63,11 @@ export default class CompanyCard extends React.Component {
                         </center>
                     </div>
                     <div className={"notes"}>
-                        {this.props.notes != "" && this.props.source != 'Official' && (this.props.notes.length < 100) &&
-                            <p>Notes: {this.props.notes}</p>
+                        {this.notes != "" && this.props.source != 'Official' && this.notes.length < 100 &&
+                            <p>Notes: {this.notes}</p>
                         }
                         <center>
-                            {this.props.notes != "" && (this.props.notes.length > 100) && this.props.source != 'Official' &&
+                            {this.notes != "" && this.props.source != 'Official' && this.notes.length > 100 &&
                                 <TheButton onClick={() => { this.showNotes() }} variant={"contained"}>View Notes</TheButton>
                             }
                         </center>
