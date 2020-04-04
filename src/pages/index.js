@@ -125,23 +125,23 @@ export default class Index extends React.Component {
             <div className={"metrics"}>
                 <div className={"metric " + yesClass} onClick={() => this.filterByStatus('yes')}>
                     <div className={"metric_number"}>{this.state.counts.yes}</div>
-                    <div className={"metric_title metric_yes no_select"}>😭 Yes</div>
+                    <div className={"metric_title company_status_yes no_select"}>😭 Yes</div>
                 </div>
                 <div className={"metric " + nopeClass} onClick={() => this.filterByStatus('nope')}>
                     <div className={"metric_number"}>{this.state.counts.nope}</div>
-                    <div className={"metric_title metric_nope no_select"}>😅 Nope</div>
+                    <div className={"metric_title company_status_no no_select"}>😅 Nope</div>
                 </div>
                 <div className={"metric " + remoteClass} onClick={() => this.filterByStatus('remote')}>
                     <div className={"metric_number"}>{this.state.counts.remote}</div>
-                    <div className={"metric_title metric_remote no_select"}>👀 Remote</div>
+                    <div className={"metric_title company_status_remote no_select"}>👀 Remote</div>
                 </div>
                 <div className={"metric " + freezeClass} onClick={() => this.filterByStatus('freeze')}>
                     <div className={"metric_number"}>{this.state.counts.freeze}</div>
-                    <div className={"metric_title metric_freeze no_select"}>🥶 Freeze</div>
+                    <div className={"metric_title company_status_freeze no_select"}>🥶 Freeze</div>
                 </div>
                 <div className={"metric " + hiringClass} onClick={() => this.filterByStatus('hiring')}>
                     <div className={"metric_number"}>{this.state.counts.hiring}</div>
-                    <div className={"metric_title metric_hiring no_select"}>🔥 Hiring</div>
+                    <div className={"metric_title company_status_hiring no_select"}>🔥 Hiring</div>
                 </div>
             </div>
         );

@@ -1,3 +1,5 @@
+@import 'StatusColors';
+
 .company_card {
     display: inline-block;
     width: 300px;
@@ -19,21 +21,6 @@
         font-size: 20pt;
         font-weight: 600;
         margin-top: 40px;
-    }
-    .company_status_no {
-        color: green;
-    }
-    .company_status_yes {
-        color: red;
-    }
-    .company_status_remote {
-        color: orange;
-    }
-    .company_status_freeze {
-        color: blue;
-    }
-    .company_status_hiring {
-        color: #fd5068
     }
     .meta {
         margin-top: 50px;

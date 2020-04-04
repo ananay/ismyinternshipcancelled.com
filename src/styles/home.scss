@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap");
+@import 'StatusColors';
 
 * {
     margin: 0;
@@ -93,21 +94,6 @@ body {
             font-size: 20pt;
             margin-top: 10px;
             font-weight: 600;
-        }
-        .metric_yes {
-            color: red;
-        }
-        .metric_nope {
-            color: green;
-        }
-        .metric_remote {
-            color: orange;
-        }
-        .metric_freeze {
-            color: blue;
-        }
-        .metric_hiring {
-            color: #fd5068;
         }
     }
     .metric_selected {

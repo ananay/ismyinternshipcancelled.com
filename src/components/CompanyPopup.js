@@ -23,6 +23,9 @@ export default class CompanyPopup extends React.Component {
                     {this.props.status == "Freeze" &&
                         <div className={"company_status company_status_freeze"}>🥶 Freeze</div>
                     }
+                    {this.props.status == "Hiring" &&
+                        <div className={"company_status company_status_hiring"}>🔥 Hiring</div>
+                    }
                     <div className={"meta"}>
                         <div className={"notes"}>{this.props.notes == '' ?  '': "Notes: " + this.props.notes}</div>
                         <div className={"source"}>
