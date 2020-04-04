@@ -183,6 +183,9 @@ export default class Index extends React.Component {
             <div>
                 <Header current={"home"} />
                 <center>
+                    <div className={"activelyHiring"}>
+                        <h1>Are you hiring during this time? <a href="/hiring">We want to know.</a></h1>
+                    </div>
                     <div className={"page"}>
                         {header}
                         <br />

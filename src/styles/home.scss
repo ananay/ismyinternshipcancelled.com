@@ -63,6 +63,33 @@ body {
     cursor: pointer;
 }
 
+.activelyHiring {
+    padding: 20px;
+    border: 4px solid rgba(0,0,0,0.05);
+    margin: 30px;
+    margin-bottom: 0px;
+    max-width: 50%;
+    font-weight: 500;
+    line-height: 2em;
+    display: inline-block;
+    border-radius: 5px;
+    h1 {
+        font-size: 20pt;
+    }
+    p {
+        font-size: 14pt;
+    }
+}
+
+.activelyHiring__page {
+    p {
+        font-size: 16pt;
+        width: 700px;
+        line-height: 1.6em;
+        text-align: justify;
+    }
+}
+
 @media only screen and (max-width: 480px) {
     .page {
         margin-top: 24px;
