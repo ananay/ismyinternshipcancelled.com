@@ -15,8 +15,9 @@ export default class Index extends React.Component {
             counts: {
                 yes: 0,
                 nope: 0,
-                umm: 0,
-                freeze: 0
+                remote: 0,
+                freeze: 0,
+                hiring: 0
             },
             search: '',
             status: '',
@@ -89,48 +90,104 @@ export default class Index extends React.Component {
         });
     }
 
-    render() {
+    renderHeader() {
+        return (
+            <div>
+                <h1 className={"page_title"}>🤔 is my internship cancelled?</h1>
+                <br />
+                <p onClick={this.showDisclaimer} className={"page_subtitle"}>
+                    We hope not.
+                    <span className={"disclaimer_icon"}><FaInfoCircle color={"#1da1f2"} size={20} /></span>
+                </p>
+            </div>
+        );
+    }
+
+    renderContributions() {
+        return (
+            <p>
+                Made by <a href="https://ananayarora.com" target="_blank">Ananay Arora</a>
+                , <a href="https://kaaniboy.github.io/" target="_blank">Kaan Aksoy</a>
+                , and <a href="https://github.com/yash101" target="_blank">Devyash Lodha</a>
+            </p>
+        );
+    }
+
+    renderStatusOptions() {
         const selectedClass = 'metric_selected';
-        let yesClass = this.state.status == 'yes' ? selectedClass : '';
-        let nopeClass = this.state.status == 'nope' ? selectedClass : '';
-        let remoteClass = this.state.status == 'remote' ? selectedClass : '';
-        let freezeClass = this.state.status == 'freeze' ? selectedClass : '';
+        let yesClass = this.state.status === 'yes' ? selectedClass : '';
+        let nopeClass = this.state.status === 'nope' ? selectedClass : '';
+        let remoteClass = this.state.status === 'remote' ? selectedClass : '';
+        let freezeClass = this.state.status === 'freeze' ? selectedClass : '';
+        let hiringClass = this.state.status === 'hiring' ? selectedClass : '';
+
+        return (
+            <div className={"metrics"}>
+                <div className={"metric " + yesClass} onClick={() => this.filterByStatus('yes')}>
+                    <div className={"metric_number"}>{this.state.counts.yes}</div>
+                    <div className={"metric_title metric_yes no_select"}>😭 Yes</div>
+                </div>
+                <div className={"metric " + nopeClass} onClick={() => this.filterByStatus('nope')}>
+                    <div className={"metric_number"}>{this.state.counts.nope}</div>
+                    <div className={"metric_title metric_nope no_select"}>😅 Nope</div>
+                </div>
+                <div className={"metric " + remoteClass} onClick={() => this.filterByStatus('remote')}>
+                    <div className={"metric_number"}>{this.state.counts.remote}</div>
+                    <div className={"metric_title metric_remote no_select"}>👀 Remote</div>
+                </div>
+                <div className={"metric " + freezeClass} onClick={() => this.filterByStatus('freeze')}>
+                    <div className={"metric_number"}>{this.state.counts.freeze}</div>
+                    <div className={"metric_title metric_freeze no_select"}>🥶 Freeze</div>
+                </div>
+                <div className={"metric " + hiringClass} onClick={() => this.filterByStatus('hiring')}>
+                    <div className={"metric_number"}>{this.state.counts.hiring}</div>
+                    <div className={"metric_title metric_hiring no_select"}>🔥 Hiring</div>
+                </div>
+            </div>
+        );
+    }
+
+    renderCompanyCards() {
+        return (
+            <div className={"list"}>
+                {this.state.data.map((r) => {
+                    if (r[0].toLowerCase().includes(this.state.search.toLowerCase())
+                        && r[1].toLowerCase().includes(this.state.status)) {
+                        return (
+                            <CompanyCard
+                                company_logo={r[6]}
+                                status={r[1]}
+                                name={r[0]}
+                                notes={r[2]}
+                                source={r[4]}
+                                official_link={r[3]}
+                                linkedin={r[5]}
+                                key={r[0]}
+                            />
+                        )
+                    } else {
+                        return (<span key={r[0]}></span>);
+                    }
+                })}
+            </div>
+        );
+    }
+
+    render() {
+        const header = this.renderHeader();
+        const contributions = this.renderContributions();
+        const statusOptions = this.renderStatusOptions();
+        const companyCards = this.renderCompanyCards();
 
         return (
             <div>
                 <Header current={"home"} />
                 <center>
                     <div className={"page"}>
-                        <h1 className={"page_title"}>🤔 is my internship cancelled?</h1>
+                        {header}
                         <br />
-                        <p onClick={this.showDisclaimer} className={"page_subtitle"}>
-                            We hope not.
-                            <span className={"disclaimer_icon"}><FaInfoCircle color={"#1da1f2"} size={20} /></span>
-                        </p>
-                        <br />
-                        <p>
-                            Made by <a href="https://ananayarora.com" target="_blank">Ananay Arora</a>
-                            , <a href="https://kaaniboy.github.io/" target="_blank">Kaan Aksoy</a>
-                            , and <a href="https://github.com/yash101" target="_blank">Devyash Lodha</a>
-                        </p>
-                        <div className={"metrics"}>
-                            <div className={"metric " + yesClass} onClick={() => this.filterByStatus('yes')}>
-                                <div className={"metric_number"}>{this.state.counts.yes}</div>
-                                <div className={"metric_title metric_yes"}>😭 Yes</div>
-                            </div>
-                            <div className={"metric " + nopeClass} onClick={() => this.filterByStatus('nope')}>
-                                <div className={"metric_number"}>{this.state.counts.nope}</div>
-                                <div className={"metric_title metric_nope"}>😅 Nope</div>
-                            </div>
-                            <div className={"metric " + remoteClass} onClick={() => this.filterByStatus('remote')}>
-                                <div className={"metric_number"}>{this.state.counts.remote}</div>
-                                <div className={"metric_title metric_remote"}>👀 Remote</div>
-                            </div>
-                            <div className={"metric " + freezeClass} onClick={() => this.filterByStatus('freeze')}>
-                                <div className={"metric_number"}>{this.state.counts.freeze}</div>
-                                <div className={"metric_title metric_freeze"}>🥶 Freeze</div>
-                            </div>
-                        </div>
+                        {contributions}
+                        {statusOptions}
                         <input
                             type={"text"}
                             placeholder={"Filter by company name..."}
@@ -138,27 +195,7 @@ export default class Index extends React.Component {
                             value={this.state.search}
                             onChange={this.updateSearch}
                         />
-                        <div className={"list"}>
-                            {this.state.data.map((r) => {
-                                if (r[0].toLowerCase().includes(this.state.search.toLowerCase())
-                                    && r[1].toLowerCase().includes(this.state.status)) {
-                                    return (
-                                        <CompanyCard
-                                            company_logo={r[6]}
-                                            status={r[1]}
-                                            name={r[0]}
-                                            notes={r[2]}
-                                            source={r[4]}
-                                            official_link={r[3]}
-                                            linkedin={r[5]}
-                                            key={r[0]}
-                                        />
-                                    )
-                                } else {
-                                    return (<span key={r[0]}></span>);
-                                }
-                            })}
-                        </div>
+                        {companyCards}
                     </div>
                 </center>
             </div>

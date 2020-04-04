@@ -79,6 +79,9 @@ export default class CompanyCard extends React.Component {
                 {this.props.status == "Freeze" &&
                     <div className={"company_status company_status_freeze"}>🥶 Freeze</div>
                 }
+                {this.props.status == "Hiring" &&
+                    <div className={"company_status company_status_hiring"}>🔥 Hiring</div>
+                }
                 <div className={"meta"}>
                     <div className={"source"}>
                         <center>

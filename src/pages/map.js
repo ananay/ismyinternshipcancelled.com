@@ -21,7 +21,8 @@ export default class InternshipMap extends React.Component {
                 yes: true,
                 no: true,
                 remote: true,
-                freeze: true
+                freeze: true,
+                hiring: true
             },
             mapOptions: {
                 position: [45.5051064, -122.6750261],
@@ -60,11 +61,9 @@ export default class InternshipMap extends React.Component {
                 }
             })
         }
-
     }
 
     render() {
-        const start = [34.0489, 111.0937];
         const companies = this.filterCompanies(this.state.data);
 
         const companyIcons = companies.map(r => {
@@ -78,7 +77,7 @@ export default class InternshipMap extends React.Component {
             .map((r, i) => {
                 const position = [+r[8].split(',')[0], +r[8].split(',')[1]];
                 return (
-                    <div className={"marker_company_status_" + r[1]}>
+                    <div className={"marker_company_status_" + r[1]} key={r[0]}>
                         <Marker
                             position={position}
                             icon={companyIcons[i]}
@@ -130,7 +129,7 @@ export default class InternshipMap extends React.Component {
     }
 
     filterCompanies(companies) {
-        const { yes, no, remote, freeze } = this.state.options;
+        const { yes, no, remote, freeze, hiring } = this.state.options;
         let filteredCompanies = [];
 
         // Remove companies without a location set
@@ -140,6 +139,7 @@ export default class InternshipMap extends React.Component {
         if (no) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Nope'));
         if (remote) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Remote'));
         if (freeze) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Freeze'));
+        if (hiring) filteredCompanies = filteredCompanies.concat(companies.filter(r => r[1] == 'Hiring'));
 
         return filteredCompanies;
     }

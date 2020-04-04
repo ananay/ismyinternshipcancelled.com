@@ -4,7 +4,7 @@
     bottom: 7%;
     right: 2.5%;
     width: 250px;
-    height: 200px;
+    height: 210px;
     padding: 30px;
     background-color: white;
     border-radius: 7px;
@@ -34,6 +34,9 @@
     }
     .company_status_freeze {
         color: blue;
+    }
+    .company_status_hiring {
+        color: #fd5068
     }
 }
 
