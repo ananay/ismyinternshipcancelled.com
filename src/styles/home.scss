@@ -104,6 +104,10 @@ body {
 	margin-right: 0px;
 	margin-bottom: 24px;
     }
+    .list {
+        display: inline-grid;
+        grid-template-columns: auto;
+    }
 }
 
 .activelyHiring__page {
