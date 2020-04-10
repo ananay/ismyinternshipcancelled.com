@@ -11,6 +11,8 @@ body {
     overflow-x: hidden;
 }
 
+// html.swal2-shown,body.swal2-shown { overflow-y: hidden !important; height: auto!important;}
+
 .menu {
     padding: 15px;
     text-align: center;
@@ -90,12 +92,24 @@ body {
     }
 }
 
+.list {
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+}
+
 @media only screen and (max-width: 480px) {
     .page {
         margin-top: 24px;
 	margin-left: 0px;
 	margin-right: 0px;
 	margin-bottom: 24px;
+    }
+}
+
+.activelyHiring__page {
+    width: 100% !important;
+    * {
+        width: 90% !important;
     }
 }
 

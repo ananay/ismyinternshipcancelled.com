@@ -20,8 +20,10 @@ export default class CompanyCard extends React.Component {
     constructor(props) {
         super(props);
         this.showNotes = this.showNotes.bind(this);
+        this.showSources = this.showSources.bind(this);
         this.showBadgeMeaning = this.showBadgeMeaning.bind(this);
         this.notes = this.props.notes || "";
+        this.sources = this.props.source || "";
     }
 
     // Used to prevent scrolling to top of page after Swal modal is closed
@@ -33,10 +35,51 @@ export default class CompanyCard extends React.Component {
 
     showNotes() {
         const [scrollX, scrollY] = this.getScrollPosition();
+
+        // Split the notes
+        let split_notes = this.notes.split(";");
+        let split_notes_html = "";
+        if (split_notes.length > 1) {
+            split_notes_html = "<div style='text-align:left;margin-left:30px;'><ul>";
+            for (let i = 0; i < split_notes.length; i++) {
+                split_notes_html += "<li>" + split_notes[i] + "<br /></li>";
+            }
+            split_notes_html += "</ul></div>";
+        } else {
+            split_notes_html = this.notes;
+        }
+
+        console.log(split_notes_html);
+
         Swal.fire({
             title: "Notes for " + this.props.name,
             type: 'info',
-            html: this.notes + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`,
+            heightAuto: false,
+            html: split_notes_html + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`,
+            onAfterClose: () => window.scrollTo(scrollX, scrollY)
+        });
+    }
+
+    showSources() {
+        const [scrollX, scrollY] = this.getScrollPosition();
+        
+        let split_sources = this.sources.split(";");
+        let split_sources_html = "";
+        if (split_sources.length > 1) {
+            split_sources_html = "<div style='text-align:left;margin-left:30px;'><ul>";
+            for (let i = 0; i < split_sources.length; i++) {
+                split_sources_html += "<li>" + split_sources[i] + "<br /></li>";
+            }
+            split_sources_html += "</ul></div>";
+        } else {
+            split_sources_html = this.sources;
+        }
+
+        Swal.fire({
+            title: "Sources for " + this.props.name,
+            type: 'info',
+            heightAuto: false,
+            html: split_sources_html + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`,
             onAfterClose: () => window.scrollTo(scrollX, scrollY)
         });
     }
@@ -93,10 +136,20 @@ export default class CompanyCard extends React.Component {
                             <p>Notes: {this.notes}</p>
                         }
                         <center>
-                            {this.notes != "" && this.props.source != 'Official' && this.notes.length >= 100 &&
+                            {this.notes != "" && this.props.source != 'Official' && !this.notes.includes(";") && this.notes.length >= 100 &&
                                 <div className={"shortened_notes"} onClick={this.showNotes}>
                                     <p>Notes: {this.shortenText(this.notes)}</p>
-                                    <p className={"notes_read_more"}>Read More</p>
+                                    <p className={"notes_read_more"}>🗒 Read More</p>
+                                </div>
+                            }
+                            {this.notes != "" && this.props.source != 'Official' && this.notes.includes(";") && this.notes.length >= 100 &&
+                                <div className={"shortened_notes"} onClick={this.showNotes}>
+                                    <p className={"notes_read_more"}>📝 Read All Notes ({this.notes.split(';').length})</p>
+                                </div>
+                            }
+                            {this.sources != "" && this.props.source != 'Official' &&
+                                <div className={"shortened_notes"} onClick={this.showSources}>
+                                    <p className={"notes_read_more"}>🔌 Show Sources ({this.sources.split(';').length})</p>
                                 </div>
                             }
                         </center>

@@ -123,6 +123,10 @@ export default class Index extends React.Component {
 
         return (
             <div className={"metrics"}>
+                <div className={"metric " + hiringClass} onClick={() => this.filterByStatus('hiring')}>
+                    <div className={"metric_number"}>{this.state.counts.hiring}</div>
+                    <div className={"metric_title company_status_hiring no_select"}>🔥 Hiring</div>
+                </div>
                 <div className={"metric " + yesClass} onClick={() => this.filterByStatus('yes')}>
                     <div className={"metric_number"}>{this.state.counts.yes}</div>
                     <div className={"metric_title company_status_yes no_select"}>😭 Yes</div>
@@ -138,10 +142,6 @@ export default class Index extends React.Component {
                 <div className={"metric " + freezeClass} onClick={() => this.filterByStatus('freeze')}>
                     <div className={"metric_number"}>{this.state.counts.freeze}</div>
                     <div className={"metric_title company_status_freeze no_select"}>🥶 Freeze</div>
-                </div>
-                <div className={"metric " + hiringClass} onClick={() => this.filterByStatus('hiring')}>
-                    <div className={"metric_number"}>{this.state.counts.hiring}</div>
-                    <div className={"metric_title company_status_hiring no_select"}>🔥 Hiring</div>
                 </div>
             </div>
         );
@@ -186,6 +186,7 @@ export default class Index extends React.Component {
                     <div className={"activelyHiring"}>
                         <h1>Are you hiring during this time? <a href="/hiring">We want to know.</a></h1>
                     </div>
+                    <br />
                     <div className={"page"}>
                         {header}
                         <br />
