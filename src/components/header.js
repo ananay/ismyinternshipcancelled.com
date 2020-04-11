@@ -27,7 +27,6 @@ export default class Header extends React.Component {
                     <ul>
                         <Link to="/"><li className={current == 'home' ? "active" : ""}>Home</li></Link>
                         <Link to="/map"><li className={current == 'map' ? "active" : ""}>Map</li></Link>
-                        <Link to="/hiring"><li className={current == 'hiring' ? "active" : ""}>Actively Hiring?</li></Link>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjfsXIOPaHSJu2G5C8rK0BnBWpsOuwc4el9hajn3BnYSNrig/viewform" target="_blank"><li>Contribute</li></a>
                     </ul>
                 </div>
