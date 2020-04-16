@@ -81,12 +81,13 @@ body {
     }
 }
 
-.activelyHiring__page {
-    p {
-        font-size: 16pt;
-        width: 700px;
-        line-height: 1.6em;
-        text-align: justify;
+.activelyHiringPage {
+    font-size: 20px;
+    line-height: 1.4em;
+    margin-left: 100px;
+    margin-right: 100px;
+    h1 {
+        line-height: 1.2em;
     }
 }
 
@@ -98,20 +99,13 @@ body {
 @media only screen and (max-width: 480px) {
     .page {
         margin-top: 24px;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-bottom: 24px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 24px;
     }
     .list {
         display: inline-grid;
         grid-template-columns: auto;
-    }
-}
-
-.activelyHiring__page {
-    width: 100% !important;
-    * {
-        width: 90% !important;
     }
 }
 
