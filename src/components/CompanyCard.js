@@ -22,20 +22,12 @@ export default class CompanyCard extends React.Component {
         this.showNotes = this.showNotes.bind(this);
         this.showSources = this.showSources.bind(this);
         this.showBadgeMeaning = this.showBadgeMeaning.bind(this);
+
         this.notes = this.props.notes || "";
         this.sources = this.props.source || "";
     }
 
-    // Used to prevent scrolling to top of page after Swal modal is closed
-    getScrollPosition() {
-        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-        return [scrollX, scrollY];
-    }
-
     showNotes() {
-        const [scrollX, scrollY] = this.getScrollPosition();
-
         // Split the notes
         let split_notes = this.notes.split(";");
         let split_notes_html = "";
@@ -49,20 +41,14 @@ export default class CompanyCard extends React.Component {
             split_notes_html = this.notes;
         }
 
-        console.log(split_notes_html);
-
         Swal.fire({
             title: "Notes for " + this.props.name,
-            type: 'info',
             heightAuto: false,
             html: split_notes_html + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`,
-            onAfterClose: () => window.scrollTo(scrollX, scrollY)
         });
     }
 
-    showSources() {
-        const [scrollX, scrollY] = this.getScrollPosition();
-        
+    showSources() {        
         let split_sources = this.sources.split(";");
         let split_sources_html = "";
         if (split_sources.length > 1) {
@@ -77,32 +63,16 @@ export default class CompanyCard extends React.Component {
 
         Swal.fire({
             title: "Sources for " + this.props.name,
-            type: 'info',
             heightAuto: false,
             html: split_sources_html + `<br /><br /><a href='${this.props.official_link}'>${this.props.official_link}</a>`,
-            onAfterClose: () => window.scrollTo(scrollX, scrollY)
         });
     }
 
     showBadgeMeaning() {
-        const [scrollX, scrollY] = this.getScrollPosition();
         Swal.fire({
             title: "What the verified badge means",
             text: "When you see a verified badge, it means the company made a public announcement in the press or reached out personally to IsMyInternshipCancelled to officially announce the change",
-            onAfterClose: () => window.scrollTo(scrollX, scrollY)
-        })
-    }
-
-    shortenText(text, limit = 100) {
-        if (!text || text.length <= limit) return text;
-
-        const sub = text.substring(0, 100);
-        if (!sub.includes(' ')) {
-            return sub + ' ...';
-        }
-
-        const lastSpace = sub.lastIndexOf(' ');
-        return sub.substring(0, lastSpace) + ' ...';
+        });
     }
 
     render() {
@@ -137,19 +107,23 @@ export default class CompanyCard extends React.Component {
                         }
                         <center>
                             {this.notes != "" && this.props.source != 'Official' && !this.notes.includes(";") && this.notes.length >= 100 &&
-                                <div className={"shortened_notes"} onClick={this.showNotes}>
-                                    <p>Notes: {this.shortenText(this.notes)}</p>
-                                    <p className={"notes_read_more"}>🗒 Read More</p>
+                                <div className={"shortened_notes"}>
+                                    <p>Notes: {shortenText(this.notes)}</p>
+                                    <button className={"read_more_button"} onClick={this.showNotes}>🗒 Read More</button>
                                 </div>
                             }
                             {this.notes != "" && this.props.source != 'Official' && this.notes.includes(";") && this.notes.length >= 100 &&
-                                <div className={"shortened_notes"} onClick={this.showNotes}>
-                                    <p className={"notes_read_more"}>📝 Read All Notes ({this.notes.split(';').length})</p>
+                                <div className={"shortened_notes"}>
+                                    <button className={"read_more_button"} onClick={this.showNotes}>
+                                        📝 Read All Notes ({this.notes.split(';').length})
+                                    </button>
                                 </div>
                             }
                             {this.sources != "" && this.props.source != 'Official' &&
                                 <div className={"shortened_notes"} onClick={this.showSources}>
-                                    <p className={"notes_read_more"}>🔌 Show Sources ({this.sources.split(';').length})</p>
+                                    <button className={"read_more_button"}>
+                                        🔌 Show Sources ({this.sources.split(';').length})
+                                    </button>
                                 </div>
                             }
                         </center>
@@ -158,4 +132,16 @@ export default class CompanyCard extends React.Component {
             </div>
         )
     }
+}
+
+function shortenText(text, limit = 100) {
+    if (!text || text.length <= limit) return text;
+
+    const sub = text.substring(0, 100);
+    if (!sub.includes(' ')) {
+        return sub + ' ...';
+    }
+
+    const lastSpace = sub.lastIndexOf(' ');
+    return sub.substring(0, lastSpace) + ' ...';
 }
