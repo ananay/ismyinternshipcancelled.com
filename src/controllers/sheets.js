@@ -13,6 +13,7 @@ const LINKEDIN_COL = 5;
 const LOGO_COL = 6;
 const LOCATION_COL = 7;
 const COORDS_COL = 8;
+const TIMESTAMP_COL = 9;
 
 function extractColumns(row) {
     return {
@@ -27,7 +28,8 @@ function extractColumns(row) {
         coords: [
             row[COORDS_COL] && row[COORDS_COL].includes(',') ? +row[COORDS_COL].split(',')[0] : 0,
             row[COORDS_COL] && row[COORDS_COL].includes(',') ? +row[COORDS_COL].split(',')[1] : 0
-        ]
+        ],
+        timestamp: row[TIMESTAMP_COL]
     };
 }
 

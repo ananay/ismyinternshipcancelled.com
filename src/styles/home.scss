@@ -64,30 +64,29 @@ body {
     cursor: pointer;
 }
 
-.activelyHiring {
-    padding: 20px;
-    border: 4px solid rgba(0, 0, 0, 0.05);
+.banner {
+    padding: 15px;
+    border: 4px solid rgba(0,0,0,0.05);
+    border-radius: 10px;
     margin: 30px;
     margin-bottom: 0px;
     max-width: 50%;
-    font-weight: 500;
     line-height: 2em;
     display: inline-block;
-    border-radius: 5px;
-    h1 {
-        font-size: 20pt;
-    }
     p {
-        font-size: 14pt;
+        font-size: 24px;
+        font-weight: 500;
+        border-radius: 5px;
     }
 }
 
-.activelyHiring__page {
-    p {
-        font-size: 16pt;
-        width: 700px;
-        line-height: 1.6em;
-        text-align: justify;
+.activelyHiringPage {
+    font-size: 20px;
+    line-height: 1.4em;
+    margin-left: 100px;
+    margin-right: 100px;
+    h1 {
+        line-height: 1.2em;
     }
 }
 
@@ -97,13 +96,6 @@ body {
         margin-left: 0px;
         margin-right: 0px;
         margin-bottom: 24px;
-    }
-}
-
-.activelyHiring__page {
-    width: 100% !important;
-    * {
-        width: 90% !important;
     }
 }
 

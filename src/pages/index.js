@@ -150,9 +150,11 @@ export default class Index extends React.Component {
     renderCompanyCards() {
         return (
             <div className={"list"}>
-                {this.state.companies.map((c) => {
-                    if (c.name.toLowerCase().includes(this.state.search.toLowerCase())
-                        && c.status.toLowerCase().includes(this.state.status)) {
+                {this.state.companies
+                    .filter(
+                        c => (c.name.toLowerCase().includes(this.state.search.toLowerCase())
+                        && c.status.toLowerCase().includes(this.state.status)))
+                    .map((c) => {
                         return (
                             <CompanyCard
                                 company_logo={c.logo}
@@ -165,10 +167,8 @@ export default class Index extends React.Component {
                                 key={c.name}
                             />
                         )
-                    } else {
-                        return (<span key={c.name}></span>);
-                    }
-                })}
+                    })
+                }
             </div>
         );
     }
@@ -183,8 +183,8 @@ export default class Index extends React.Component {
             <div>
                 <Header current={"home"} />
                 <center>
-                    <div className={"activelyHiring"}>
-                        <h1>Are you hiring during this time? <a href="/hiring">We want to know.</a></h1>
+                    <div className={"banner"}>
+                        <p>Are you hiring during this time? <a href="/hiring">We want to know.</a></p>
                     </div>
                     <br />
                     <div className={"page"}>

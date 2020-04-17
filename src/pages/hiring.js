@@ -14,16 +14,25 @@ export default class Hiring extends React.Component {
                 <Header current={"hiring"} />
                 <br />
                 <center>
-                    <div className={"activelyHiring__page"}>
-                        <h1>🚨 Are you actively hiring? We want to know. 🚨 </h1>
+                    <div className={"page activelyHiringPage"}>
+                        <h1>🚨 Actively Hiring? We want to know 🚨</h1>
                         <br /><br />
-                        <p><a href="https://techcrunch.com/2020/04/02/cloudflare-ceo-pledges-to-double-2020-internship-class/" target="_blank">Cloudflare recently decided to double the internship class of 2020</a> and we absolutely appreciate that, and want to honor those companies that are doing so.</p>
+                        <p>
+                            Cloudflare recently decided to&nbsp;
+                            <a href="https://techcrunch.com/2020/04/02/cloudflare-ceo-pledges-to-double-2020-internship-class/" target="_blank">
+                                double its 2020 internship class
+                            </a>
+                            . As students ourselves, we appreciate every effort by companies to accomodate impacted interns.
+                            If your company is hiring - regardless of country or if the internship is remote – please let us know
+                            so that we can help those that have lost their internships during this crisis.
                         <br />
-                        <p>If you're hiring – no matter what country you're in or if your internship is remote – please help out those that have lost their internships during this crisis.</p>
                         <br />
-                        <p>If you're a recruiter, please get in touch with me (Ananay Arora) via email below.</p>
+                        <p>
+                            If you are a recruiter, please get in touch with us via email below:
+                        </p>
                         <br />
-                        <h1><a href="mailto:i@ananayarora.com">i@ananayarora.com</a></h1>
+                        <h2><a href="mailto:i@ananayarora.com">i@ananayarora.com</a></h2>
+                        </p>
                     </div>
                 </center>
             </div>
