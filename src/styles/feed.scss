@@ -1,0 +1,31 @@
+@import 'StatusColors';
+
+h1 {
+    padding: 20px;
+    
+}
+
+ul.feed-container {
+    margin: 0 10px;
+    list-style: none;
+    a {
+        color: inherit;
+        text-decoration: inherit;
+        font-weight: 600;
+    }
+    li {
+        padding-bottom: 15px;
+        font-size: 20px;
+    }
+}
+
+.status {
+    font-weight: 600;
+}
+
+.company-logo {
+    width: 32px;
+    height: 32px;
+    padding-right: 10px;
+    margin-bottom: -10px;
+}
