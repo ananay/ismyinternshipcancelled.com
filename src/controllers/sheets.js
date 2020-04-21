@@ -30,7 +30,7 @@ function extractColumns(row) {
             row[COORDS_COL] && row[COORDS_COL].includes(',') ? +row[COORDS_COL].split(',')[0] : 0,
             row[COORDS_COL] && row[COORDS_COL].includes(',') ? +row[COORDS_COL].split(',')[1] : 0
         ],
-        timestamp: row[TIMESTAMP_COL] || '3/24/2020'
+        timestamp: row[TIMESTAMP_COL]
     };
 }
 
