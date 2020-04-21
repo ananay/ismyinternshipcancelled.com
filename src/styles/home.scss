@@ -13,7 +13,7 @@
     background: #111;
     color: #fff;
     white-space: nowrap;
-    overflow-x: scroll;
+    overflow-x: inherit;
     ul {
         list-style: none;
         a {
@@ -34,7 +34,6 @@
 }
 
 .page {
-    margin-top: 50px;
     margin-left: 64px;
     margin-right: 64px;
     margin-bottom: 50px;
@@ -136,6 +135,7 @@
     outline: none;
     border-bottom: 4px solid rgba(0, 0, 0, 0.05);
     transition: border-bottom 0.25s;
+    text-align: center;
 }
 
 .search_box:active,

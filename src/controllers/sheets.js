@@ -1,5 +1,6 @@
 const axios = require('axios');
 const url = "https://sheets.googleapis.com/v4/spreadsheets/1MoVx8Df8oPFRPRgAb6xpZ9wmh_bInZaRxs2Zj_dFR7U/values/Sheet1!A2:Z999?key=AIzaSyD5mv39wz-LAC_bu9ZzleywmxGhYN9s79s";
+const logo_default = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAACtJREFUeAFjGNTgPwjQgwOEdOHAAU05CEtpzQEBIJ+WnFH/kMmhW3obzAAAsZW+UDEMcxgAAAAASUVORK5CYII=';
 
 let companies = [];
 let err = false;
@@ -17,13 +18,13 @@ const TIMESTAMP_COL = 9;
 
 function extractColumns(row) {
     return {
-        name: row[NAME_COL],
-        status: row[STATUS_COL],
+        name: row[NAME_COL] || 'unknown company',
+        status: row[STATUS_COL] || 'nope',
         notes: row[NOTES_COL],
         source: row[SOURCE_COL],
         official_link: row[OFFICIAL_LINK_COL],
         linkedin: row[LINKEDIN_COL],
-        logo: row[LOGO_COL],
+        logo: row[LOGO_COL] || logo_default,
         location: row[LOCATION_COL],
         coords: [
             row[COORDS_COL] && row[COORDS_COL].includes(',') ? +row[COORDS_COL].split(',')[0] : 0,
