@@ -38,7 +38,7 @@ export default class Feed extends React.Component {
 
             return (
                 <tr key={c.name}>
-                    <td className={'status'}>
+                    <td className={'status'} title={c.status}>
                         {c.status === 'Hiring' && <span className="status company_status_hiring">🔥</span>}
                         {c.status === 'Yes' && <span className="status company_status_yes">😭</span>}
                         {c.status === 'Nope' && <span className="status company_status_no">😅</span>}
