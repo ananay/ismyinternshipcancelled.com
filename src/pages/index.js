@@ -198,7 +198,7 @@ export default class Index extends React.Component {
                 <Header current={"home"} />
                 <center>
                     <div className={"banner"}>
-                        <p>Are you hiring? <a onClick={this.showHiring}>We want to know.</a></p>
+                        <p>Are you hiring? <a onClick={this.showHiring} style="cursor: pointer;">We want to know.</a></p>
                     </div>
                     <div className={"page"}>
                         {header}
