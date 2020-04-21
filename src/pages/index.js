@@ -72,6 +72,19 @@ export default class Index extends React.Component {
         window.history.replaceState({}, '', '?' + this.urlParams.toString());
     }
 
+    shotHiring() {
+        Swal.fire({
+            title: 'Hiring?',
+            html: `
+            <p>Are you actively hiring? Cloudflare recently decided to <a href="https://techcrunch.com/2020/04/02/cloudflare-ceo-pledges-to-double-2020-internship-class/" target="_blank">double its internship size</a>.</p>
+            <p>As students ourself, we greatly appreciate and value every effort by companies to accomodate impacted interns.</p>
+            <p>Regardless of whether the internship is in person or remote, if your company is hiring, please contact us so we can help those who lost their internships due to this crisis!</p>
+            <br />
+            <p>If you are a recruiter, please <a href="mailto:hiring@ismyinternshipcancelled.com?subject=Hiring%3A%20%7Bcompany%20name%7D" target="_blank">contact us!</a></p>
+            `
+        });
+    }
+
     showDisclaimer() {
         Swal.fire({
             title: 'Disclaimer',
@@ -183,9 +196,6 @@ export default class Index extends React.Component {
             <div>
                 <Header current={"home"} />
                 <center>
-                    <div className={"activelyHiring"}>
-                        <h1>Are you hiring during this time? <a href="/hiring">We want to know.</a></h1>
-                    </div>
                     <div className={"page"}>
                         {header}
                         <br />
