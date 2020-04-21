@@ -5,27 +5,33 @@ h1 {
     
 }
 
-ul.feed-container {
-    margin: 0 10px;
-    list-style: none;
-    a {
-        color: inherit;
-        text-decoration: inherit;
-        font-weight: 600;
-    }
-    li {
-        padding-bottom: 15px;
-        font-size: 20px;
-    }
+.feed-container td {
+    border-collapse: collapse;
 }
 
-.status {
-    font-weight: 600;
-}
-
-.company-logo {
+.feed-container img {
     width: 32px;
     height: 32px;
-    padding-right: 10px;
-    margin-bottom: -10px;
+}
+
+.feed-container .status {
+    font-weight: 600;
+    font-size: 32px;
+    margin: 16px;
+}
+
+.feed-container .company-name {
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.feed-container .timestamp {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.feed-container td {
+    margin-bottom: 32px;
 }
