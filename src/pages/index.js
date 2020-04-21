@@ -25,6 +25,7 @@ export default class Index extends React.Component {
         this.updateSearch = this.updateSearch.bind(this);
         this.filterByStatus = this.filterByStatus.bind(this);
         this.showDisclaimer = this.showDisclaimer.bind(this);
+        this.showHiring = this.showHiring.bind(this);
     }
 
     componentDidMount() {
@@ -72,7 +73,7 @@ export default class Index extends React.Component {
         window.history.replaceState({}, '', '?' + this.urlParams.toString());
     }
 
-    shotHiring() {
+    showHiring() {
         Swal.fire({
             title: 'Hiring?',
             html: `
@@ -196,6 +197,8 @@ export default class Index extends React.Component {
             <div>
                 <Header current={"home"} />
                 <center>
+                    <div className={"banner"}><p>Are you hiring? <a onClick={this.showHiring} href="">We want to know!</a></p></div>
+                    <br />
                     <div className={"page"}>
                         {header}
                         <br />
