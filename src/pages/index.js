@@ -93,7 +93,10 @@ export default class Index extends React.Component {
             <p>As students ourself, we greatly appreciate and value every effort by companies to accomodate impacted interns.</p>
             <p>Regardless of whether the internship is in person or remote, if your company is hiring, please contact us so we can help those who lost their internships due to this crisis!</p>
             <br />
-            <p>If you are a recruiter, please <a href="mailto:hiring@ismyinternshipcancelled.com?subject=Hiring%3A%20%7Bcompany%20name%7D" target="_blank">contact us!</a></p>
+            <p>If you are a recruiter, please to us from your <b>official email</b></p><br />
+            Ananay Arora - <a href="mailto:i@ananayarora.com">i@ananayarora.com</a><br />
+            Kaan Aksoy - <a href="mailto:kaanaksoyaz@gmail.com">kaanaksoyaz@gmail.com</a><br />
+            Devyash Lodha - <a href="mailto:lodhad@gmail.com">lodhad@gmail.com</a><br />
             `
         });
     }
