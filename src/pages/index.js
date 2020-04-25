@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { FaInfoCircle } from 'react-icons/fa';
 import { FaCheckCircle } from 'react-icons/fa';
 import Checkbox from '@material-ui/core/Checkbox';
+import { Box, Grid, Divider } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class Index extends React.Component {
@@ -198,7 +199,7 @@ export default class Index extends React.Component {
                             && c.status.toLowerCase().includes(this.state.status)))
                     .map((c) => {
                         if (
-                            (this.state.verifiedOnly == true && c.source == "Official") || 
+                            (this.state.verifiedOnly == true && c.source == "Official") ||
                             (this.state.verifiedOnly == false)
                         ) {
                             return (
@@ -231,11 +232,13 @@ export default class Index extends React.Component {
                 <Header current={"home"} />
                 <center>
                     <div className={"banner"}>
-                        <p>Are you hiring? <a onClick={this.showHiring} style={{cursor: 'pointer'}}>We want to know.</a></p>
-                    </div>
-                    <br />
-                    <div className={"banner"}>
-                        <p>Company representative?&nbsp;&nbsp;&nbsp;<FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p>
+                        <Box mb={2}>
+                            <p>Are you hiring? <a onClick={this.showHiring} style={{ cursor: 'pointer' }}>We want to know.</a></p>
+                        </Box>
+                        <Divider />
+                        <Box mt={2}>
+                            <p style={{ lineHeight: 1.8 }}>Are you a company representative?<br /><p><FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p></p>
+                        </Box>
                     </div>
                     <br />
                     <div className={"page"}>
