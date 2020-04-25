@@ -5,6 +5,9 @@ import sheets from "../controllers/sheets";
 import CompanyCard from '../components/CompanyCard.js';
 import Swal from 'sweetalert2';
 import { FaInfoCircle } from 'react-icons/fa';
+import { FaCheckCircle } from 'react-icons/fa';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class Index extends React.Component {
 
@@ -21,11 +24,14 @@ export default class Index extends React.Component {
             },
             search: '',
             status: '',
+            verifiedOnly: false
         };
         this.updateSearch = this.updateSearch.bind(this);
         this.filterByStatus = this.filterByStatus.bind(this);
         this.showDisclaimer = this.showDisclaimer.bind(this);
         this.showHiring = this.showHiring.bind(this);
+        this.verifiedPopup = this.verifiedPopup.bind(this);
+        this.updateVerified = this.updateVerified.bind(this);
     }
 
     componentDidMount() {
@@ -47,6 +53,12 @@ export default class Index extends React.Component {
                 status: this.urlParams.get('status')
             });
         }
+    }
+
+    updateVerified(event) {
+        this.setState({
+            verifiedOnly: event.target.checked
+        });
     }
 
     updateSearch(t) {
@@ -101,6 +113,19 @@ export default class Index extends React.Component {
             <br />
             <p>All logos and branding elements used on these pages are properties of their respective 
             organizations.</p>`
+        });
+    }
+
+    verifiedPopup() {
+        Swal.fire({
+            title: 'Get your company verified',
+            html: `
+            <p>We're encouraging all companies to verify their current internship status to avoid any false information floating around during this situation. If you're a recruiter or company representative, please email any one of us from your <b>official email</b>. <br /><br />
+            Ananay Arora - <a href="mailto:i@ananayarora.com">i@ananayarora.com</a><br />
+            Kaan Aksoy - <a href="mailto:kaanaksoyaz@gmail.com">kaanaksoyaz@gmail.com</a><br />
+            Devyash Lodha - <a href="mailto:lodhad@gmail.com">lodhad@gmail.com</a><br />
+            <br /><br />
+            <b>Your identity will be kept anonymous and all communication will be private.</b>`
         });
     }
 
@@ -167,20 +192,25 @@ export default class Index extends React.Component {
                 {this.state.companies
                     .filter(
                         c => (c.name.toLowerCase().includes(this.state.search.toLowerCase())
-                        && c.status.toLowerCase().includes(this.state.status)))
+                            && c.status.toLowerCase().includes(this.state.status)))
                     .map((c) => {
-                        return (
-                            <CompanyCard
-                                company_logo={c.logo}
-                                status={c.status}
-                                name={c.name}
-                                notes={c.notes}
-                                source={c.source}
-                                official_link={c.official_link}
-                                linkedin={c.linkedin}
-                                key={c.name}
-                            />
-                        )
+                        if (
+                            (this.state.verifiedOnly == true && c.source == "Official") || 
+                            (this.state.verifiedOnly == false)
+                        ) {
+                            return (
+                                <CompanyCard
+                                    company_logo={c.logo}
+                                    status={c.status}
+                                    name={c.name}
+                                    notes={c.notes}
+                                    source={c.source}
+                                    official_link={c.official_link}
+                                    linkedin={c.linkedin}
+                                    key={c.name}
+                                />
+                            )
+                        }
                     })
                 }
             </div>
@@ -200,11 +230,30 @@ export default class Index extends React.Component {
                     <div className={"banner"}>
                         <p>Are you hiring? <a onClick={this.showHiring} style={{cursor: 'pointer'}}>We want to know.</a></p>
                     </div>
+                    <br />
+                    <div className={"banner"}>
+                        <p>Company representative?&nbsp;&nbsp;&nbsp;<FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p>
+                    </div>
+                    <br />
                     <div className={"page"}>
                         {header}
                         <br />
                         {contributions}
                         {statusOptions}
+                        <br />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    color={"#1da1f2"}
+                                    icon={<FaCheckCircle fontSize="small" />}
+                                    checkedIcon={<FaCheckCircle fontSize="small" color={"#1da1f2"} />}
+                                    name="checkedI"
+                                    onChange={(event) => { this.updateVerified(event) }}
+                                />
+                            }
+                            label="Show Verified Only"
+                        />
+                        <br />
                         <input
                             type={"text"}
                             placeholder={"Filter by company name..."}
