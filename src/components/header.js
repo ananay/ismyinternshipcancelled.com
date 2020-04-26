@@ -27,7 +27,7 @@ export default class Header extends React.Component {
                     <meta name="theme-color" content="#FF0000" />
 
                     <meta property="og:title" content="Is my internship cancelled?" />
-                    {/*<meta property="og:image" content="https://ismyinternshipcancelled.com/img/social-card-img.png" />*/}
+                    <meta property="og:image" content="https://ismyinternshipcancelled.com/img/og-img.png" />
                     <meta property="og:url" content="https://ismyinternshipcancelled.com/" />
                     <meta
                         property="og:description"
