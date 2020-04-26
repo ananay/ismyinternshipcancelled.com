@@ -215,6 +215,19 @@ export default class Index extends React.Component {
                         {companyCards}
                     </div>
                 </center>
+
+                <div className={"social-buttons"}>
+                    <a
+                        href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                        className={"twitter-share-button social-button"}
+                        data-size="large"
+                        data-text="Was your internship cancelled?"
+                        data-url="https://ismyinternshipcancelled.com"
+                        data-hashtags="internshipsmatter, saveinternships"
+                        data-show-count="false"
+                    >Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
             </div>
         );
     }
