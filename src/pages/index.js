@@ -122,7 +122,7 @@ export default class Index extends React.Component {
                 <br />
                 <p>Email us:</p>
                 <div style="padding-left: 32px;">
-                    <p><a href="mailto:i@ananayarora.com,lodhad@gmail.com,kaanaksoyaz@gmail.com?subject=%5Bimic-complaints%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bshort%20description%7D">Email all of us</a></p>
+                    <p><a href="mailto:i@ananayarora.com,lodhad@gmail.com,kaanaksoyaz@gmail.com?subject=%5Bimic-complaints%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bshort%20description%7D">Pre-filled email to all of us</a></p>
                     <br />
                     <p><a href="mailto:i@ananayarora.com?subject=%5Bimic-complaints%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bshort%20description%7D">Ananay Arora &lt;i@ananayarora.com&gt;</a></p>
                     <p><a href="mailto:kaanaksoyaz@gmail.com?subject=%5Bimic-complaints%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bshort%20description%7D">Kaan Aksoy &lt;kaanaksoyaz@gmail.com&gt;</a></p>
@@ -173,7 +173,7 @@ export default class Index extends React.Component {
                 Made by <a href="https://ananayarora.com" target="_blank">Ananay Arora</a>
                 , <a href="https://kaaniboy.github.io/" target="_blank">Kaan Aksoy</a>
                 , and <a href="https://github.com/yash101" target="_blank">Devyash Lodha</a>
-                ; <a href="#" onclick={this.showDisclaimer} style={{cursor: 'pointer'}}>Show Disclaimer</a>
+                ; <a onClick={this.showDisclaimer} style={{cursor: 'pointer'}}>Show Disclaimer</a>
             </p>
         );
     }
