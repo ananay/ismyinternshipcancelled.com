@@ -255,7 +255,7 @@ export default class Index extends React.Component {
                 <center>
                     <div className={"banner"}>
                         <Box mt={2}>
-                            <p>Are you hiring? <a onClick={this.showHiring} style={{ cursor: 'pointer' }}>We want to know.</a></p>
+                            <p>Hiring? <a onClick={this.showHiring} style={{ cursor: 'pointer' }}>We want to know.</a></p>
                         </Box>
                         <Box mt={2}>
                             <p>Company rep?&nbsp;<a onClick={() => { this.verifiedPopup() }} style={{ cursor: 'pointer' }}>Verify your company status</a>&nbsp;<FaCheckCircle color={"#1da1f2"} size={20} /></p>
