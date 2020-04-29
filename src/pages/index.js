@@ -232,13 +232,11 @@ export default class Index extends React.Component {
                 <Header current={"home"} />
                 <center>
                     <div className={"banner"}>
-                        <Box mb={2}>
-                            <p>Are you hiring? <a onClick={this.showHiring} style={{ cursor: 'pointer' }}>We want to know.</a></p>
-                        </Box>
-                        <Divider />
-                        <Box mt={2}>
-                            <p style={{ lineHeight: 1.8 }}>Are you a company representative?<br /><p><FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p></p>
-                        </Box>
+                        <p>Are you hiring? <a onClick={this.showHiring} style={{ cursor: 'pointer' }}>We want to know.</a></p>
+                    </div>
+                    <br />
+                    <div className={"banner"}>
+                        <p style={{ lineHeight: 1.8 }}>Are you a company representative?<br /><p><FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p></p>
                     </div>
                     <br />
                     <div className={"page"}>
