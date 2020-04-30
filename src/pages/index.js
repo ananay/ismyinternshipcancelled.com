@@ -162,6 +162,7 @@ export default class Index extends React.Component {
                 <br />
                 <p onClick={this.showDisclaimer} className={"page_subtitle"}>
                     We hope not!
+                    <span alt="disclaimer" className={"disclaimer_icon"}><FaInfoCircle color={"#1da1f2"} size={20} /></span>
                 </p>
             </div>
         );
@@ -173,7 +174,7 @@ export default class Index extends React.Component {
                 Made by <a href="https://ananayarora.com" target="_blank">Ananay Arora</a>
                 , <a href="https://kaaniboy.github.io/" target="_blank">Kaan Aksoy</a>
                 , and <a href="https://github.com/yash101" target="_blank">Devyash Lodha</a>
-                ; <a onClick={this.showDisclaimer} style={{cursor: 'pointer'}}>Show Disclaimer</a>
+                {/* <a href="#" onClick={this.showDisclaimer} style={{cursor: 'pointer'}}>Show Disclaimer</a> */}
             </p>
         );
     }
@@ -254,11 +255,12 @@ export default class Index extends React.Component {
                 <Header current={"home"} />
                 <center>
                     <div className={"banner"}>
-                        <Box mt={2}>
-                            <p>Hiring? <a onClick={this.showHiring} style={{ cursor: 'pointer' }}>We want to know.</a></p>
+                        <Box mb={2}>
+                            <p>Hiring? <a href="#" onClick={this.showHiring} style={{ cursor: 'pointer' }}>let us know!</a></p>
                         </Box>
+                        <Divider />
                         <Box mt={2}>
-                            <p>Company rep?&nbsp;<a onClick={() => { this.verifiedPopup() }} style={{ cursor: 'pointer' }}>Verify your company status</a>&nbsp;<FaCheckCircle color={"#1da1f2"} size={20} /></p>
+                            <p style={{ lineHeight: 1.8 }}>Company rep?<br /><p><FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p></p>
                         </Box>
                     </div>
                     <br />
