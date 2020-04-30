@@ -4,7 +4,7 @@ import "../styles/home.scss";
 import sheets from "../controllers/sheets";
 import CompanyCard from '../components/CompanyCard.js';
 import Swal from 'sweetalert2';
-import { FaInfoCircle } from 'react-icons/fa';
+import { FaInfoCircle, FaInfo } from 'react-icons/fa';
 import { FaCheckCircle } from 'react-icons/fa';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Box, Grid, Divider } from '@material-ui/core';
@@ -90,14 +90,17 @@ export default class Index extends React.Component {
         Swal.fire({
             title: 'Hiring?',
             html: `
-            <p>Are you actively hiring? Cloudflare recently decided to <a href="https://techcrunch.com/2020/04/02/cloudflare-ceo-pledges-to-double-2020-internship-class/" target="_blank">double its internship size</a>.</p>
-            <p>As students ourself, we greatly appreciate and value every effort by companies to accomodate impacted interns.</p>
-            <p>Regardless of whether the internship is in person or remote, if your company is hiring, please contact us so we can help those who lost their internships due to this crisis!</p>
-            <br />
-            <p>If you are a recruiter, please to us from your <b>official email</b></p><br />
-            Ananay Arora - <a href="mailto:i@ananayarora.com">i@ananayarora.com</a><br />
-            Kaan Aksoy - <a href="mailto:kaanaksoyaz@gmail.com">kaanaksoyaz@gmail.com</a><br />
-            Devyash Lodha - <a href="mailto:lodhad@gmail.com">lodhad@gmail.com</a><br />
+            <div style="text-align: left;">
+                <p>Are you actively hiring? We'd love to know!</p>
+                <p>If you work at a company that is hiring, <a href="mailto:i@ananayarora.com,lodhad@gmail.com,kaanaksoyaz@gmail.com?subject=%5Bhiring%5D%20%7Breplace%20with%20your%20company%20name%7D%20is%20hiring!">shoot us an email</a> so we can list your company as actively hiring!</p>
+                <br />
+                <p>If your email client didn't like the email above, our emails are listed below:</p>
+                <div style="padding-left: 32px;">
+                    <p>Ananay Arora - <a href="mailto:i@ananayarora.com">i@ananayarora.com</a></p>
+                    <p>Kaan Aksoy - <a href="mailto:kaanaksoyaz@gmail.com">kaanaksoyaz@gmail.com</a></p>
+                    <p>Devyash Lodha - <a href="mailto:lodhad@gmail.com">lodhad@gmail.com</a></p>
+                </div>
+            </div>
             `
         });
     }
@@ -106,30 +109,49 @@ export default class Index extends React.Component {
         Swal.fire({
             title: 'Disclaimer',
             html: `
-            <p>If you're an employer, and would like me to remove your organization from this page, or would 
-            like to send an official confirmation to us about your hiring status, please reach out at 
-            <a href="#">i [at] ananayarora.com</a></p>
-            <br />
-            <p>No information on this page is our own, and none reflects our views.  All hiring 
-            information here is curated from the Internet, and the sources are listed in the Contributions 
-            document. If there's an official notice from the organization regarding their internship program's status, 
-            it will be linked.</p>
-            <br />
-            <p>All logos and branding elements used on these pages are properties of their respective 
-            organizations.</p>`
+            <div style="text-align: left;">
+                <p>If you're an employer, and would like me to remove your organization from this page, or would 
+                like to send an official confirmation to us about your hiring status, please reach out to us (contact information below)</p>
+                <br />
+                <p>No information on this page is our own, and none reflects our views.  All hiring 
+                information here is curated from the Internet, and the sources are listed in the Contributions 
+                document. If there's an official notice from the organization regarding their internship program's status, 
+                it will be linked.</p>
+                <br />
+                <p>All logos and branding elements used on these pages are properties of their respective organizations.</p>
+                <br />
+                <p>Email us:</p>
+                <div style="padding-left: 32px;">
+                    <p><a href="mailto:i@ananayarora.com,lodhad@gmail.com,kaanaksoyaz@gmail.com?subject=%5Bimic-complaints%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bshort%20description%7D">Pre-filled email to all of us</a></p>
+                    <br />
+                    <p><a href="mailto:i@ananayarora.com?subject=%5Bimic-complaints%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bshort%20description%7D">Ananay Arora &lt;i@ananayarora.com&gt;</a></p>
+                    <p><a href="mailto:kaanaksoyaz@gmail.com?subject=%5Bimic-complaints%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bshort%20description%7D">Kaan Aksoy &lt;kaanaksoyaz@gmail.com&gt;</a></p>
+                    <p><a href="mailto:lodhad@gmail.com?subject=%5Bimic-complaints%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bshort%20description%7D">Devyash Lodha &lt;lodhad@gmail.com&gt;</a></p>
+                </div>
+            </div>`
         });
     }
 
     verifiedPopup() {
         Swal.fire({
-            title: 'Get your company verified',
+            title: 'Get Verified!',
             html: `
-            <p>We're encouraging all companies to verify their current internship status to avoid any false information floating around during this situation. If you're a recruiter or company representative, please email any one of us from your <b>official email</b>. <br /><br />
-            Ananay Arora - <a href="mailto:i@ananayarora.com">i@ananayarora.com</a><br />
-            Kaan Aksoy - <a href="mailto:kaanaksoyaz@gmail.com">kaanaksoyaz@gmail.com</a><br />
-            Devyash Lodha - <a href="mailto:lodhad@gmail.com">lodhad@gmail.com</a><br />
-            <br /><br />
-            <b>Your identity will be kept anonymous and all communication will be private.</b>`
+            <div style="text-align: left;">
+                <p>If you're an employer, please <a href="mailto:i@ananayarora.com,lodhad@gmail.com,kaanaksoyaz@gmail.com?subject=%5Bimic-verification%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bstatus%7D&body=Internship%20Status%3A%20%7Bbau%7Cremote%7Ccancelled%7D%0D%0AHiring%20Status%3A%20%7Bfrozen%7Cbau%7D%0D%0ADate%20of%20status%20change%3A%20%7Bdate%7D%0D%0AAuthoritative%20Source%3A%20%7Blink%20or%20attached%20to%20email%7D">email us</a> to verify your company's internship/hiring status!</p>
+                <p>Let's reduce false information! Most information is crowdsourced, so if you are a recruiter, or work at a company, email us to verify your company's status!</p>
+                <br />
+                <p><a href="mailto:i@ananayarora.com,lodhad@gmail.com,kaanaksoyaz@gmail.com?subject=%5Bimic-verification%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bstatus%7D&body=Internship%20Status%3A%20%7Bbau%7Cremote%7Ccancelled%7D%0D%0AHiring%20Status%3A%20%7Bfrozen%7Cbau%7D%0D%0ADate%20of%20status%20change%3A%20%7Bdate%7D%0D%0AAuthoritative%20Source%3A%20%7Blink%20or%20attached%20to%20email%7D">Please fill out this pre-filled email</a></p>
+                <br />
+                <p>If the above link doesn't work, email us all at:</p>
+                <div style="padding-left: 32px;">
+                    <br />
+                    Ananay Arora - <a href="mailto:i@ananayarora.com?subject=%5Bimic-verification%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bstatus%7D&body=Internship%20Status%3A%20%7Bbau%7Cremote%7Ccancelled%7D%0D%0AHiring%20Status%3A%20%7Bfrozen%7Cbau%7D%0D%0ADate%20of%20status%20change%3A%20%7Bdate%7D%0D%0AAuthoritative%20Source%3A%20%7Blink%20or%20attached%20to%20email%7D">i@ananayarora.com</a><br />
+                    Kaan Aksoy - <a href="mailto:kaanaksoyaz@gmail.com?subject=%5Bimic-verification%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bstatus%7D&body=Internship%20Status%3A%20%7Bbau%7Cremote%7Ccancelled%7D%0D%0AHiring%20Status%3A%20%7Bfrozen%7Cbau%7D%0D%0ADate%20of%20status%20change%3A%20%7Bdate%7D%0D%0AAuthoritative%20Source%3A%20%7Blink%20or%20attached%20to%20email%7D">kaanaksoyaz@gmail.com</a><br />
+                    Devyash Lodha - <a href="mailto:lodhad@gmail.com?subject=%5Bimic-verification%5D%20%7Breplace%20with%20your%20company%20name%7D%20%7Bstatus%7D&body=Internship%20Status%3A%20%7Bbau%7Cremote%7Ccancelled%7D%0D%0AHiring%20Status%3A%20%7Bfrozen%7Cbau%7D%0D%0ADate%20of%20status%20change%3A%20%7Bdate%7D%0D%0AAuthoritative%20Source%3A%20%7Blink%20or%20attached%20to%20email%7D">lodhad@gmail.com</a><br />
+                </div>
+                <br />
+                <p>Please redact any information you don't want public! We try our best to remove PII but things slip through!</p>
+            </div>`
         });
     }
 
@@ -139,8 +161,8 @@ export default class Index extends React.Component {
                 <h1 className={"page_title"}>🤔 is my internship cancelled?</h1>
                 <br />
                 <p onClick={this.showDisclaimer} className={"page_subtitle"}>
-                    We hope not.
-                    <span className={"disclaimer_icon"}><FaInfoCircle color={"#1da1f2"} size={20} /></span>
+                    We hope not!
+                    <span alt="disclaimer" className={"disclaimer_icon"}><FaInfoCircle color={"#1da1f2"} size={20} /></span>
                 </p>
             </div>
         );
@@ -152,6 +174,7 @@ export default class Index extends React.Component {
                 Made by <a href="https://ananayarora.com" target="_blank">Ananay Arora</a>
                 , <a href="https://kaaniboy.github.io/" target="_blank">Kaan Aksoy</a>
                 , and <a href="https://github.com/yash101" target="_blank">Devyash Lodha</a>
+                {/* <a href="#" onClick={this.showDisclaimer} style={{cursor: 'pointer'}}>Show Disclaimer</a> */}
             </p>
         );
     }
@@ -233,11 +256,11 @@ export default class Index extends React.Component {
                 <center>
                     <div className={"banner"}>
                         <Box mb={2}>
-                            <p>Are you hiring? <a onClick={this.showHiring} style={{ cursor: 'pointer' }}>We want to know.</a></p>
+                            <p>Hiring? <a href="#" onClick={this.showHiring} style={{ cursor: 'pointer' }}>let us know!</a></p>
                         </Box>
                         <Divider />
                         <Box mt={2}>
-                            <p style={{ lineHeight: 1.8 }}>Are you a company representative?<br /><p><FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p></p>
+                            <p style={{ lineHeight: 1.8 }}>Company rep?<br /><p><FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p></p>
                         </Box>
                     </div>
                     <br />
