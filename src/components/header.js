@@ -9,7 +9,7 @@ export default class Header extends React.Component {
     }
 
     render() {
-        const {current} = this.props;
+        const { current } = this.props;
         return (
             <div className={"header"}>
                 <Helmet>
@@ -43,6 +43,19 @@ export default class Header extends React.Component {
                     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
                     <link rel="manifest" href="/site.webmanifest"></link>
 
+                    <script type="application/ld+json">
+                        {
+                            "@context": "https://schema.org/",
+                            "@type": "WebSite",
+                            "name": "Is My Internship Cancelled",
+                            "url": "https://ismyinternshipcancelled.com",
+                            "potentialAction": {
+                                "@type": "SearchAction",
+                                "target": "https://ismyinternshipcancelled.com/?company={search_term_string}",
+                                "query-input": "required name=search_term_string"
+                            }
+                        }
+                    </script>
                 </Helmet>
                 <div className={"menu"}>
                     <ul>
