@@ -167,3 +167,44 @@ a {
 }
 
 body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) { overflow-y: visible !important; }
+
+.emoji {
+    display: inline-block;
+}
+
+.emoji-sm {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.emoji-md {
+    width: 64px;
+    height: 64px;
+}
+
+.emoji-lg {
+    width: 128px;
+    height: 128px;
+}
+
+.emo-cry-sm {
+    background-image: url('/img/emo-cry.png');
+}
+
+.emo-fire-sm {
+    background-image: url('/img/emo-fire.png');
+}
+
+.emo-grin-sm {
+    background-image: url('/img/emo-grin.png');
+}
+
+.emo-freeze-sm {
+    background-image: url('/img/emo-freeze.png');
+}
+
+.emo-eyes-sm {
+    background-image: url('/img/emo-eyes.png');
+}
