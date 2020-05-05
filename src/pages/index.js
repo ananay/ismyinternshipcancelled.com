@@ -254,21 +254,20 @@ export default class Index extends React.Component {
             <div>
                 <Header current={"home"} />
                 <center>
-                    <div className={"banner"}>
-                        <Box mb={2}>
-                            <p>Hiring? <a href="#" onClick={this.showHiring} style={{ cursor: 'pointer' }}>let us know!</a></p>
-                        </Box>
-                        <Divider />
-                        <Box mt={2}>
-                            <p style={{ lineHeight: 1.8 }}>Company rep?<br /><p><FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p></p>
-                        </Box>
-                    </div>
                     <br />
                     <div className={"page"}>
                         {header}
                         <br />
                         {contributions}
                         {statusOptions}
+                        <div className={"banner"}>
+                            <p style={{ lineHeight: 1.8 }}>Are you Hiring? <a href="#" onClick={this.showHiring} style={{ cursor: 'pointer' }}>let us know here!</a></p>
+                        </div>
+                        <div className={"banner"}>
+                            <p style={{ lineHeight: 1.8 }}>Company rep?&nbsp;&nbsp;<FaCheckCircle color={"#1da1f2"} size={20} />&nbsp;<a href="#" onClick={() => { this.verifiedPopup() }}>Verify your company here.</a></p>
+                        </div>
+                        <br />
+                        <br />
                         <br />
                         <FormControlLabel
                             control={
@@ -282,6 +281,7 @@ export default class Index extends React.Component {
                             }
                             label="Show Verified Only"
                         />
+                        <br />
                         <br />
                         <input
                             type={"text"}

@@ -44,6 +44,7 @@ export default class Header extends React.Component {
                     <link rel="manifest" href="/site.webmanifest"></link>
 
                     <script type="application/ld+json">
+                    {`
                         {
                             "@context": "https://schema.org/",
                             "@type": "WebSite",
@@ -55,6 +56,7 @@ export default class Header extends React.Component {
                                 "query-input": "required name=search_term_string"
                             }
                         }
+                    `}
                     </script>
                 </Helmet>
                 <div className={"menu"}>
