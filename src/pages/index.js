@@ -279,7 +279,7 @@ export default class Index extends React.Component {
                                     onChange={(event) => { this.updateVerified(event) }}
                                 />
                             }
-                            label="Show Verified Only"
+                            label="Show Verified Companies Only"
                         />
                         <br />
                         <br />
