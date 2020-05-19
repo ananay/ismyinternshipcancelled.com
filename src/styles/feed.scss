@@ -5,8 +5,27 @@ h1 {
     
 }
 
+.feed-title {
+    font-weight: 400;
+}
+
+.feed-container {
+    .header {
+        font-weight: 700;
+        text-align: center;
+    }
+}
+
+.feed-container tr {
+    background-color: #fafafa;
+    &:hover {
+        background-color: #eee;
+    }
+}
+
 .feed-container td {
-    border-collapse: collapse;
+    padding: 20px;
+    // border-collapse: collapse;
 }
 
 .feed-container img {
@@ -16,15 +35,15 @@ h1 {
 
 .feed-container .status {
     font-weight: 600;
-    font-size: 32px;
+    font-size: 24px;
     margin: 16px;
 }
 
 .feed-container .company-name {
     padding-left: 16px;
     padding-right: 16px;
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .feed-container .timestamp {

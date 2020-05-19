@@ -16,8 +16,7 @@ export default class Feed extends React.Component {
 
     componentDidMount() {
         const FEED_LENGTH = 20;
-
-        sheets.fetch().then((companies) => {
+        sheets.fetchContributions().then((companies) => {
             companies = companies
                 .filter(c => c.timestamp && c.timestamp !== '')
                 .map(c => {
@@ -27,8 +26,8 @@ export default class Feed extends React.Component {
                 .sort((a, b) => a.timestamp - b.timestamp)
                 .reverse()
                 .slice(0, FEED_LENGTH);
-            
-            this.setState({companies});
+
+            this.setState({ companies });
         });
     }
 
@@ -39,11 +38,11 @@ export default class Feed extends React.Component {
             return (
                 <tr key={c.name}>
                     <td className={'status'} title={c.status}>
-                        {c.status === 'Hiring' && <span className="status company_status_hiring">🔥</span>}
-                        {c.status === 'Yes' && <span className="status company_status_yes">😭</span>}
-                        {c.status === 'Nope' && <span className="status company_status_no">😅</span>}
-                        {c.status === 'Remote' && <span className="status company_status_remote">👀</span>}
-                        {c.status === 'Freeze' && <span className="status company_status_freeze">🥶</span>}
+                        {c.status === 'Hiring' && <span className="status company_status_hiring">🔥 Hiring</span>}
+                        {c.status === 'Yes' && <span className="status company_status_yes">😭 Yes</span>}
+                        {c.status === 'Nope' && <span className="status company_status_no">😅 Nope</span>}
+                        {c.status === 'Remote' && <span className="status company_status_remote">👀 Remote</span>}
+                        {c.status === 'Freeze' && <span className="status company_status_freeze">🥶 Freeze</span>}
                     </td>
 
                     <td><a href={companyURL}>
@@ -51,14 +50,14 @@ export default class Feed extends React.Component {
                     </a></td>
 
                     <td className={'company-name'}>{c.name}</td>
-                    <td className={'timestamp'}>{ moment(c.timestamp).fromNow() }</td>
+                    <td className={'timestamp'}>{moment(c.timestamp).fromNow()}</td>
                 </tr>
             );
 
             return (
                 <li key={c.name}>
                     <a href={companyURL} target="_blank">
-                        {c.logo && <img src={c.logo} className={"company-logo"}/>}
+                        {c.logo && <img src={c.logo} className={"company-logo"} />}
                         {c.name}
                     </a>
                     &nbsp;was updated to&nbsp;
@@ -82,8 +81,14 @@ export default class Feed extends React.Component {
             <div>
                 <Header current={"feed"} />
                 <center>
-                    <h1>Recent Updates</h1>
+                    <h1 className={"feed-title"}>Recent Updates</h1>
                     <table className={"feed-container"}>
+                        <tr className={"header"}>
+                            <td>Status</td>
+                            <td>Logo</td>
+                            <td>Company Name</td>
+                            <td>Updated</td>
+                        </tr>
                         {feed}
                     </table>
                     {/* <ul className={"feed-container"}>
@@ -91,6 +96,6 @@ export default class Feed extends React.Component {
                     </ul> */}
                 </center>
             </div>
-       );
+        );
     }
 }
