@@ -158,6 +158,12 @@ export default class Index extends React.Component {
     renderHeader() {
         return (
             <div>
+                <div className={"banner banner-small"}>
+                    <p>
+                        Internship cancelled?&nbsp;
+                        <a href="https://quaranteam.tech" target="_blank">Find a side project on Quaranteam.</a>
+                    </p>
+                </div>
                 <h1 className={"page_title"}>🤔 is my internship cancelled?</h1>
                 <br />
                 <p onClick={this.showDisclaimer} className={"page_subtitle"}>
