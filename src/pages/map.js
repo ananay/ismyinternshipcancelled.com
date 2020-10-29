@@ -69,10 +69,21 @@ export default class InternshipMap extends React.Component {
         }
     }
 
+    getImageName(name) {
+        name = name.trim();
+        name = name.split(' ').join('-');
+        name = name.toLowerCase();
+        if (name.includes("/")) {
+            name = name.split('/').join('-');
+            name = name.toLowerCase();
+        }
+        return "/images/" + name + ".jpg";
+    }
+
     renderMarkers(companies) {
         const companyIcons = companies.map(c => {
             return L.icon({
-                iconUrl: c.logo || this.DEFAULT_MARKER_ICON_URL,
+                iconUrl: this.getImageName(c.name) || this.DEFAULT_MARKER_ICON_URL,
                 iconSize: this.MARKER_ICON_SIZE
             });
         });

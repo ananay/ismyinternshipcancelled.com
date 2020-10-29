@@ -4,6 +4,7 @@ import { styled } from '@material-ui/styles';
 import { Button } from "@material-ui/core";
 import Swal from 'sweetalert2';
 import { FaCheckCircle } from 'react-icons/fa';
+import CompanyPopup from '../components/CompanyPopup';
 
 const TheButton = styled(Button)({
     background: 'linear-gradient(30deg, #1b40de, #2cb4ed)',
@@ -22,9 +23,12 @@ export default class CompanyCard extends React.Component {
         this.showNotes = this.showNotes.bind(this);
         this.showSources = this.showSources.bind(this);
         this.showBadgeMeaning = this.showBadgeMeaning.bind(this);
-
+        this.showCompanyCardModal = this.showCompanyCardModal.bind(this);
         this.notes = this.props.notes || "";
         this.sources = this.props.source || "";
+        this.state = {
+            modalOpen: false
+        }
     }
 
     showNotes() {
@@ -48,7 +52,7 @@ export default class CompanyCard extends React.Component {
         });
     }
 
-    showSources() {        
+    showSources() {
         let split_sources = this.sources.split(";");
         let split_sources_html = "";
         if (split_sources.length > 1) {
@@ -75,11 +79,21 @@ export default class CompanyCard extends React.Component {
         });
     }
 
+    showCompanyCardModal() {
+        this.setState({
+            modalOpen: true
+        })
+    }
+
     render() {
         return (
-            <div className={"company_card"}>
+            <div className={"company_card"} onClick={() => { this.showCompanyCardModal() }}>
+                <CompanyPopup
+                    {...this.props}
+                    modalOpen={this.state.modalOpen}
+                />
                 <img src={this.props.company_logo}></img>
-                <h1 className={"name"}>{this.props.name} {this.props.source == 'Official' && <span className={"badgeMeaningLink"} onClick={() => {this.showBadgeMeaning()}}><FaCheckCircle color={"#1da1f2"} size={20} /></span>}</h1>
+                <h1 className={"name"}>{this.props.name} {this.props.source == 'Official' && <span className={"badgeMeaningLink"} onClick={() => { this.showBadgeMeaning() }}><FaCheckCircle color={"#1da1f2"} size={20} /></span>}</h1>
                 {this.props.status == "Yes" &&
                     <div className={"company_status company_status_yes"}>😭 Yes</div>
                 }

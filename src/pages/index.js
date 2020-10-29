@@ -213,6 +213,17 @@ export default class Index extends React.Component {
         );
     }
 
+    getImageName(name) {
+        name = name.trim();
+        name = name.split(' ').join('-');
+        name = name.toLowerCase();
+        if (name.includes("/")) {
+            name = name.split('/').join('-');
+            name = name.toLowerCase();
+        }
+        return "/images/" + name + ".jpg";
+    }
+
     renderCompanyCards() {
         return (
             <div className={"list"}>
@@ -227,7 +238,7 @@ export default class Index extends React.Component {
                         ) {
                             return (
                                 <CompanyCard
-                                    company_logo={c.logo}
+                                    company_logo={this.getImageName(c.name)}
                                     status={c.status}
                                     name={c.name}
                                     notes={c.notes}
