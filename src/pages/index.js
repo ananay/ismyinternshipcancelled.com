@@ -56,7 +56,7 @@ export default class Index extends React.Component {
 
 
         return (
-            <div style={{height: '84%'}}> 
+            <div> 
                 <Header current={"home"}></Header>
                 <div className={"intro"}>
                     {renderHeader}
