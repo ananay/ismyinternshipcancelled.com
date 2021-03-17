@@ -9,7 +9,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.47",
     "@material-ui/styles": "^4.9.6",
-    "axios": "^0.19.2",
+    "axios": ">=0.21.1",
     "gatsby": "^2.19.45",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-google-analytics": "^2.2.2",
