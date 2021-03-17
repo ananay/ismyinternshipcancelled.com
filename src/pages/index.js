@@ -6,6 +6,16 @@ import { styled } from '@material-ui/styles';
 import { Button } from "@material-ui/core";
 import "../styles/home.scss";
 
+const TheButton = styled(Button)({
+    background: 'linear-gradient(315deg, #4c4177 0%, #2a5470 74%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(44, 180, 237, .1)',
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+});
+
 export default class Index extends React.Component {
 
     constructor(props) {
@@ -44,15 +54,6 @@ export default class Index extends React.Component {
         const renderHeader = this.renderHeader();
         const renderContributions = this.renderContributions();
 
-        const TheButton = styled(Button)({
-            background: 'linear-gradient(315deg, #4c4177 0%, #2a5470 74%)',
-            border: 0,
-            borderRadius: 3,
-            boxShadow: '0 3px 5px 2px rgba(44, 180, 237, .1)',
-            color: 'white',
-            height: 48,
-            padding: '0 30px',
-        });
 
         return (
             <div style={{height: '84%'}}> 
