@@ -1,5 +1,6 @@
 const axios = require('axios');
 const url = "https://sheets.googleapis.com/v4/spreadsheets/1MoVx8Df8oPFRPRgAb6xpZ9wmh_bInZaRxs2Zj_dFR7U/values/Sheet1!A2:Z999?key=AIzaSyD5mv39wz-LAC_bu9ZzleywmxGhYN9s79s";
+const url_2021 = "https://sheets.googleapis.com/v4/spreadsheets/1MoVx8Df8oPFRPRgAb6xpZ9wmh_bInZaRxs2Zj_dFR7U/values/2021!A2:Z999?key=AIzaSyD5mv39wz-LAC_bu9ZzleywmxGhYN9s79s";
 const url_contribute = "https://sheets.googleapis.com/v4/spreadsheets/1MoVx8Df8oPFRPRgAb6xpZ9wmh_bInZaRxs2Zj_dFR7U/values/Contributions!A2:Z999?key=AIzaSyD5mv39wz-LAC_bu9ZzleywmxGhYN9s79s";
 const logo_default = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAACtJREFUeAFjGNTgPwjQgwOEdOHAAU05CEtpzQEBIJ+WnFH/kMmhW3obzAAAsZW+UDEMcxgAAAAASUVORK5CYII=';
 
@@ -43,9 +44,15 @@ const extractColumnsContributions = (row) => {
     };
 }
 
-const fetch = () => {
+const fetch = (year) => {
     return new Promise((resolve, reject) => {
-        axios.get(url).then((r) => {
+        let fetchURL = url;
+        if (year == "2021") {
+            fetchURL = url_2021;
+        } else {
+            fetchURL = url;
+        }
+        axios.get(fetchURL).then((r) => {
             companies = r.data.values.map(extractColumns);
             resolve(companies);
         }).catch((e) => {

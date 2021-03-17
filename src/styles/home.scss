@@ -7,11 +7,71 @@
     font-family: "Avenir Next", sans-serif;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+.intro {
+    background: #000;
+    text-align: center;
+    height: 100%;
+    color: #fff;
+    padding-top: 200px;
+    .page_title {
+        font-weight: 100;
+        font-size: 40pt;
+    }
+    .contributions {
+        padding-top: 20px;
+        font-size: 14pt;
+        margin-top: 20px;
+    }
+    padding-bottom: 60px;
+    .tagline {
+        font-size: 20pt;
+    }
+    .status_buttons {
+        margin-top: 30px;
+        button {
+            margin: 30px;
+        }
+    }
+}
+
+.press {
+    padding-top: 50px;
+    .as_seen_on {
+        text-align: center;
+        text-transform: uppercase;
+        color: #333;
+        font-size: 13pt;
+        letter-spacing: 5px;
+    }
+    img {
+        width: 130px;
+        vertical-align: middle;
+        filter: brightness(0) invert(1);
+        display: inline-block;
+        padding: 40px;
+    }
+}
+
+.header-dark_mode {
+    color: #fff;
+}
+
 .menu {
     padding: 15px;
     text-align: center;
-    background: #111;
+    background: #000;
     color: #fff;
+    position: fixed;
+    width: 100%;
     white-space: nowrap;
     overflow-x: inherit;
     ul {

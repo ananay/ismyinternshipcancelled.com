@@ -80,9 +80,9 @@ export default class CompanyCard extends React.Component {
     }
 
     showCompanyCardModal() {
-        this.setState({
-            modalOpen: true
-        })
+        // this.setState({
+        //     modalOpen: true
+        // })
     }
 
     render() {
