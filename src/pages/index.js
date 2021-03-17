@@ -4,6 +4,7 @@ import { FaInfoCircle, FaInfo } from 'react-icons/fa';
 import { Link } from "gatsby";
 import { styled } from '@material-ui/styles';
 import { Button } from "@material-ui/core";
+import "../styles/home.scss";
 
 export default class Index extends React.Component {
 
